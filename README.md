@@ -1,2 +1,2 @@
-# qanat: a app for your electric cars
+# qanat: an app for your electric cars
 
