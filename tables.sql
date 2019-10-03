@@ -9,5 +9,6 @@ CREATE TABLE IF NOT EXISTS vehicle(
     vin BIGINT NOT NULL,
     make VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL 
+    year INT NOT NULL,
     
 )
