@@ -1,3 +1,7 @@
+CREATE DATABASE cs4750;
+
+USE cs4750;
+
 CREATE TABLE IF NOT EXISTS users(
     user_id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
@@ -10,7 +14,7 @@ CREATE TABLE IF NOT EXISTS vehicles(
     make VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL 
     year INT NOT NULL,
-    PRIMARY KEY(vin)
+    PRIMARY KEY(car_id)
 );
 
 CREATE TABLE IF NOT EXISTS plugs(
@@ -29,7 +33,7 @@ CREATE TABLE IF NOT EXISTS charge_events(
     event_id INT NOT NULL AUTO_INCREMENT,
     dt_start DATETIME NOT NULL,
     dt_end DATETIME NOT NULL,
-    PRIMARY KRY (event_id)
+    PRIMARY KEY (event_id)
 );
 
 CREATE TABLE IF NOT EXISTS happens_at(
@@ -66,9 +70,10 @@ CREATE TABLE IF NOT EXISTS hosts(
 );
 
 CREATE TABLE IF NOT EXISTS reviews(
-    review_id INT NOT AUTO_INCREMENT,
+    review_id INT NOT NULL AUTO_INCREMENT,
     rating INT NOT NULL,
-    text VARCHAR(1000) NOT NULL
+    review_text VARCHAR(1000) NOT NULL,
+    PRIMARY KEY(review_id)
 );
 
 CREATE TABLE IF NOT EXISTS makes(
