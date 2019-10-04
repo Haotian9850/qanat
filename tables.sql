@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS vehicles(
 CREATE TABLE IF NOT EXISTS plugs(
     plug_id INT NOT NULL AUTO_INCREMENT,
     model_no BIGINT NOT NULL,
-    charge_sppend FLOAT NOT NULL,
+    charge_speed FLOAT NOT NULL,
     PRIMARY KEY(serial_no)
 );
 
