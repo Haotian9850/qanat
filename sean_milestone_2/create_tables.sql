@@ -1,4 +1,4 @@
-use stg2bd_project;
+use ns9wr_qanat;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(
@@ -95,7 +95,7 @@ create table Supports(
 -- Owns(VIN, user_id)
 create table Owns(
   VIN varchar(50) not null,
-  user_id varchar(50) not null,
+  user_id int not null,
   primary key (VIN,user_id),
   constraint fk_owns_vehicle
     foreign key (VIN) references Vehicle(VIN),
@@ -106,7 +106,7 @@ create table Owns(
 -- Makes(review_id, user_id)
 create table Makes(
   review_id int not null,
-  user_id varchar(50) not null,
+  user_id int not null,
   primary key (review_id),
   constraint fk_makes_review
     foreign key (review_id) references Review(review_id),
