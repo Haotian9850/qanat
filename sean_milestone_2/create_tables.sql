@@ -2,7 +2,7 @@ use stg2bd_project;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(
-  station_ID int not null,
+  station_ID int not null AUTO_INCREMENT,
   num_plugs int not null,
   location varchar(50),
   primary key (station_ID)
@@ -45,14 +45,14 @@ create table Vehicle(
 
 -- User(user_id,username)
 create table User(
-  user_id varchar(50) not null,
+  user_id varchar(50) not null AUTO_INCREMENT,
   username varchar(50) not null,
   primary key (user_id)
 );
 
 -- Review(review_id,text,rating)
 create table Review(
-  review_id int not null,
+  review_id int not null AUTO_INCREMENT,
   text varchar(100) not null,
   rating int not null,
   primary key (review_id)
