@@ -129,17 +129,17 @@ create table Happens_At(
 
 -- ------------------------------------
 -- For demo. Delete if used:
-desc Station;
-desc Plug;
-desc Plug_Model;
-desc Car_Type;
-desc Vehicle;
-desc User;
-desc Review;
-desc Charge_Event;
-desc Hosts;
-desc Supports;
-desc Owns;
-desc Makes;
-desc Happens_At;
-source destroy_tables.sql
+-- desc Station;
+-- desc Plug;
+-- desc Plug_Model;
+-- desc Car_Type;
+-- desc Vehicle;
+-- desc User;
+-- desc Review;
+-- desc Charge_Event;
+-- desc Hosts;
+-- desc Supports;
+-- desc Owns;
+-- desc Makes;
+-- desc Happens_At;
+-- source destroy_tables.sql
