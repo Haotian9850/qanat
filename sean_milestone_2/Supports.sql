@@ -1,4 +1,4 @@
-load data local infile 'MOCK_DATA(10).csv' into table Supports
+load data local infile 'Supports.csv' into table Supports
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'

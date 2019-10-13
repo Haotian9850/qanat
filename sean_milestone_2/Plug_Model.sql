@@ -1,4 +1,4 @@
-load data local infile 'MOCK_DATA(1).csv' into table Plug_Model
+load data local infile 'Plug_Model.csv' into table Plug_Model
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'

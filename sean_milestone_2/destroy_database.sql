@@ -1,0 +1,27 @@
+delete from Owns;
+delete from Makes;
+delete from Happens_At;
+delete from Hosts;
+delete from Supports;
+delete from Station;
+delete from Plug;
+delete from Plug_Model;
+delete from User;
+delete from Review;
+delete from Charge_Event;
+delete from Vehicle;
+delete from Car_Type;
+
+drop table Owns;
+drop table Makes;
+drop table Happens_At;
+drop table Hosts;
+drop table Supports;
+drop table Station;
+drop table Plug;
+drop table Plug_Model;
+drop table User;
+drop table Review;
+drop table Charge_Event;
+drop table Vehicle;
+drop table Car_Type;

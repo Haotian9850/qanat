@@ -1,4 +1,4 @@
-load data local infile 'MOCK_DATA(3).csv' into table Car_Type
+load data local infile 'Car_Type.csv' into table Car_Type
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'

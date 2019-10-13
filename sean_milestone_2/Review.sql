@@ -1,4 +1,4 @@
-load data local infile 'MOCK_DATA(6).csv' into table Review
+load data local infile 'Review.csv' into table Review
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'

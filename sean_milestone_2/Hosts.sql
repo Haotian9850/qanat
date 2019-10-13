@@ -1,4 +1,4 @@
-load data local infile 'MOCK_DATA(9).csv' into table Hosts
+load data local infile 'Hosts.csv' into table Hosts
  fields terminated by ','
  enclosed by '"'
  lines terminated by '\n'
