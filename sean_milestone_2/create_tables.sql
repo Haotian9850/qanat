@@ -26,8 +26,8 @@ create table Plug(
 
 -- Car_Type(year,make,model)
 create table Car_Type(
-  make int not null,
-  model int not null,
+  make varchar(50) not null,
+  model varchar(50) not null,
   year int not null,
   primary key (make,model,year)
 );
@@ -35,8 +35,8 @@ create table Car_Type(
 -- Vehicle(VIN,year,make,model)
 create table Vehicle(
   VIN varchar(50) not null,
-  make int not null,
-  model int not null,
+  make varchar(50) not null,
+  model varchar(50) not null,
   year int not null,
   primary key (VIN),
   constraint fk_vehicle_car_type
@@ -82,8 +82,8 @@ create table Hosts(
 -- Supports(model_no,year,make,model)
 create table Supports(
   model_no varchar(50) not null,
-  make int not null,
-  model int not null,
+  make varchar(50) not null,
+  model varchar(50) not null,
   year int not null,
   primary key (model_no,make,model,year),
   constraint fk_supports_plug_model
