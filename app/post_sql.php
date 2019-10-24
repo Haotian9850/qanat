@@ -3,7 +3,8 @@
   error_reporting(E_ALL);
   require_once('./connect.php');
 
-  get_table($_POST["sql"]);
+  echo get_json($_POST["sql"]);
+  // echo get_json("Select * from Plug");
 
   mysqli_close($con);
 

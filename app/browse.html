@@ -5,7 +5,7 @@
     <title>Select</title>
     <link rel="stylesheet" href="styles/table.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="js/sql.js"></script>
     <style media="screen">
       #sql{
         width: 100%;
@@ -27,23 +27,19 @@
 
       $(function(){
 
-        function handle_sql(sql){
-          var out = "no";
-
-          $.ajax({
-            url: "post_sql.php",
-            method: "post",
-            data: {"sql": sql}
-          }).done(function(response) {
-            console.log(response);
-            $("#output").append(response);
-            $("#output").append("<br/><hr/>");
-          });
-        }
-
         $("#submit").click(function(){
-          console.log(handle_sql($("#sql").val()));
-          //
+          var sql = $("#sql").val();
+          get_and_handle_json(sql,function(response) {
+            $("#output").append("<h3><code>" + sql + "</code></h3>")
+            if(response.includes("failed")){
+              $("#output").append(response);
+            }else{
+              $("#output").append(json_to_table(response));
+              $("#output").append("<br/><hr/>");
+            }
+
+          });
+
         });
 
       });

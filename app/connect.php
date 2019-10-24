@@ -14,7 +14,34 @@
 
   function run_sql($sql){
     global $con;
-    return mysqli_query($con,$sql);
+    $result = mysqli_query($con,$sql);
+
+    return $result;
+  }
+
+  function get_json($sql){
+
+    $result = run_sql($sql);
+
+    if($result == null){
+      return "Query <code>".$sql."</code> failed.";
+    }
+
+    $json_object = array();
+
+    $cols = $result->fetch_fields();
+    foreach ($cols as $col) {
+      $json_object[$col->name] = array();
+    }
+
+    while($row = mysqli_fetch_array($result)) {
+      foreach ($cols as $col) {
+        array_push($json_object[$col->name],$row[$col->name]);
+        // echo "<td>".$row[$col->name]."</td>";
+      }
+    }
+
+    return json_encode($json_object);
   }
 
   function get_table($sql){
