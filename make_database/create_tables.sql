@@ -142,4 +142,4 @@ create table Happens_At(
 -- desc Owns;
 -- desc Makes;
 -- desc Happens_At;
--- source destroy_tables.sql
+-- source destroy_database.sql
