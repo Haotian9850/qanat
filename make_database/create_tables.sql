@@ -61,8 +61,8 @@ create table Review(
 -- Charge_Event(VIN, dt_start, dt_end)
 create table Charge_Event(
   VIN varchar(50) not null,
-  dt_start date not null,
-  dt_end date not null,
+  dt_start timestamp not null,
+  dt_end timestamp not null,
   primary key (VIN,dt_start),
   constraint fk_charge_event_vehicle
     foreign key (VIN) references Vehicle(VIN)
@@ -118,7 +118,7 @@ create table Makes(
 -- Happens_At(VIN, dt_start, serial_no)
 create table Happens_At(
   VIN varchar(50) not null,
-  dt_start date not null,
+  dt_start timestamp not null,
   serial_no varchar(50) not null,
   primary key (VIN,dt_start),
   constraint fk_happens_at_plug
