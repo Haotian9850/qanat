@@ -47,6 +47,7 @@ create table Vehicle(
 create table User(
   user_id int not null AUTO_INCREMENT,
   username varchar(50) not null,
+  hash varchar(76) not null,
   primary key (user_id)
 );
 
