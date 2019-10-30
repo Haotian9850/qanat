@@ -64,11 +64,11 @@ create table Review(
 -- Charge_Event(VIN, dt_start, dt_end)
 create table Charge_Event(
   VIN varchar(50) not null,
-  dt_start timestamp not null,
-  dt_end timestamp not null,
+  dt_start DATETIME not null,
+  dt_end DATETIME not null,
   primary key (VIN,dt_start),
   constraint fk_charge_event_vehicle
-    foreign key (VIN) references Vehicle(VIN)
+  foreign key (VIN) references Vehicle(VIN)
 );
 
 -- Hosts(serial_no, station_ID)
