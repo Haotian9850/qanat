@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Select</title>
+    <link rel="stylesheet" href="styles/table.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/sql.js"></script>
+    <style media="screen">
+      #sql{
+        width: 100%;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <h1>Raw SQL Browser</h1>
+
+    <textarea placeholder="enter sql" id="sql"></textarea>
+    <button id="submit">Submit</button>
+
+    <div id="output"></div>
+
+
+    <script type="text/javascript">
+
+      $(function(){
+
+        $("#submit").click(function(){
+          var sql = $("#sql").val();
+          get_and_handle_json(sql,function(response) {
+            $("#output").append("<h3><code>" + sql + "</code></h3>")
+            if(response.includes("failed")){
+              $("#output").append(response);
+            }else{
+              $("#output").append(json_to_table(response));
+              $("#output").append("<br/><hr/>");
+            }
+
+          });
+
+        });
+
+      });
+
+    </script>
+
+
+</body>
+</html>
