@@ -25,6 +25,5 @@
         # do nothing
     }
 
-    echo login("haotifdsan", "123456");
 
 ?>
