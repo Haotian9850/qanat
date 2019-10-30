@@ -1,6 +1,6 @@
 <?php 
     require("config.php");
-    mysqli_report(MYSQLI_REPORT_ALL);
+    //mysqli_report(MYSQLI_REPORT_ALL);
     
     function get_sql_connection(){
         $conn =  new mysqli(
