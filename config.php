@@ -5,7 +5,10 @@
 
   define("SERVER", "localhost");
   define("USERNAME", "root");
-  define("PASSWORD", "");   // YOUR SQL PASSWORD
+  define("PASSWORD", "52cz14");   // YOUR SQL PASSWORD
   define("DATABASE", "qanat");
+
+  define("TEMPLATE_PATH", "templates");
+  define("SERVICE_PATH", "service");
 
 ?>

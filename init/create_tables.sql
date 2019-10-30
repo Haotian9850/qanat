@@ -2,7 +2,6 @@ CREATE DATABASE qanat;
 
 use qanat;
 
--- Station(station_ID,num_plugs,location)
 create table Station(
   station_ID int not null AUTO_INCREMENT,
   num_plugs int not null,
@@ -10,14 +9,14 @@ create table Station(
   primary key (station_ID)
 );
 
--- Plug_Model(model_no, charge_speed)
+
 create table Plug_Model(
   model_no varchar(50) not null,
   charge_speed int not null,
   primary key (model_no)
 );
 
--- Plug(serial_no, model_no)
+
 create table Plug(
   serial_no varchar(50) not null,
   model_no varchar(50) not null,
@@ -26,7 +25,7 @@ create table Plug(
     foreign key (model_no) references Plug_Model(model_no)
 );
 
--- Car_Type(year,make,model)
+
 create table Car_Type(
   make varchar(50) not null,
   model varchar(50) not null,
@@ -34,7 +33,7 @@ create table Car_Type(
   primary key (make,model,year)
 );
 
--- Vehicle(VIN,year,make,model)
+
 create table Vehicle(
   VIN varchar(50) not null,
   make varchar(50) not null,
@@ -45,15 +44,15 @@ create table Vehicle(
     foreign key (make,model,year) references Car_Type(make,model,year)
 );
 
--- User(user_id,username)
+
 create table User(
   user_id int not null AUTO_INCREMENT,
   username varchar(50) not null,
-  hash varchar(76) not null,
+  password varchar(76) not null,
   primary key (user_id)
 );
 
--- Review(review_id,text,rating)
+
 create table Review(
   review_id int not null AUTO_INCREMENT,
   text varchar(100) not null,
@@ -61,7 +60,7 @@ create table Review(
   primary key (review_id)
 );
 
--- Charge_Event(VIN, dt_start, dt_end)
+
 create table Charge_Event(
   VIN varchar(50) not null,
   dt_start DATETIME not null,
@@ -71,7 +70,7 @@ create table Charge_Event(
   foreign key (VIN) references Vehicle(VIN)
 );
 
--- Hosts(serial_no, station_ID)
+
 create table Hosts(
   serial_no varchar(50) not null,
   station_ID int not null,
@@ -82,7 +81,7 @@ create table Hosts(
     foreign key (station_ID) references Station(station_ID)
 );
 
--- Supports(model_no,year,make,model)
+
 create table Supports(
   model_no varchar(50) not null,
   make varchar(50) not null,
@@ -95,7 +94,7 @@ create table Supports(
     foreign key (make,model,year) references Car_Type(make,model,year)
 );
 
--- Owns(VIN, user_id)
+
 create table Owns(
   VIN varchar(50) not null,
   user_id int not null,
@@ -106,7 +105,7 @@ create table Owns(
     foreign key (user_id) references User(user_id)
 );
 
--- Makes(review_id, user_id)
+
 create table Makes(
   review_id int not null,
   user_id int not null,
@@ -118,7 +117,7 @@ create table Makes(
 
 );
 
--- Happens_At(VIN, dt_start, serial_no)
+
 create table Happens_At(
   VIN varchar(50) not null,
   dt_start timestamp not null,
