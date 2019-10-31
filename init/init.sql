@@ -1,0 +1,14 @@
+source /var/www/html/init/create_tables.sql
+source /var/www/html/init/Station.sql
+source /var/www/html/init/Plug_Model.sql
+source /var/www/html/init/Plug.sql
+source /var/www/html/init/Car_Type.sql
+source /var/www/html/init/Vehicle.sql
+source /var/www/html/init/User.sql
+source /var/www/html/init/Review.sql
+source /var/www/html/init/Charge_Event.sql
+source /var/www/html/init/Hosts.sql
+source /var/www/html/init/Supports.sql
+source /var/www/html/init/Owns.sql
+source /var/www/html/init/Makes.sql
+source /var/www/html/init/Happens_At.sql
