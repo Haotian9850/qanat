@@ -40,6 +40,7 @@
             }
             //TODO: add exception handling
             register_service($_POST["username"], $_POST["password"], $cars);
+            $_SESSION["statusMsg"] = "Registration successful";
             header("Location:?action=login");
         }
         require(TEMPLATE_PATH."register.php");
