@@ -6,6 +6,12 @@
     line-height: 40px; 
     background-color: #232C4B;
 }
+
+.row-margined {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
 .main-content {
     width: 100%;
 }

@@ -14,7 +14,7 @@
      *      year: int
      *  }
      */
-    function register($username, $password, $cars){
+    function register_service($username, $password, $cars){
         $conn = get_sql_connection();
         register_cars($conn, $cars, register_user($conn, $username, $password));
     }

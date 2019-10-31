@@ -13,16 +13,13 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Qanat: Find Electricity for Your Car</a>
-
-            <div class="btn btn-light" role="alert">
+        <a class="navbar-brand">Qanat: Find Electricity for Your Car</a>
+        <div class="btn btn-light" role="alert">
                 Logged in as {{ username }} &nbsp;
-                <a href="#">Log out</a>
-            </div>
-
-            <a href="#" class="btn btn-light">Register</a>
-            &nbsp;&nbsp;&nbsp;
-            <a href="#" class="btn btn-light">Log in</a>
-
-
-        </nav>
+            <a href="#">Log out</a>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <a href="#" class="btn btn-light">Register</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="#" class="btn btn-light">Log in</a>
+    </nav>

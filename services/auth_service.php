@@ -2,7 +2,7 @@
 
     require("../connect.php");
 
-    function login($username, $password){
+    function login_service($username, $password){
         $conn = get_sql_connection();
         $login = "SELECT * FROM User WHERE username = '$username' && password = '$password'";
         /*

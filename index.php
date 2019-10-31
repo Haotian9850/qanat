@@ -3,6 +3,7 @@
     require("config.php");
     require("connect.php");
     require(SERVICE_PATH."auth_service.php");
+    require(SERVICE_PATH."registration_service.php");
 
 
 
@@ -23,10 +24,13 @@
           homepage(); 
       }
 
-
-      function archive() {
-
+      
+      function register(){
+          
       }
+
+    
+    
 
 
 
