@@ -1,5 +1,6 @@
 .footer {
     text-align: center;
+    position: absolute !important;
     bottom: 0;
     width: 100%;
     height: 45px;
@@ -12,9 +13,15 @@
     margin-bottom: 1rem !important;
 }
 
+.msg {
+    width: 100% !important;   
+    margin-top: 2rem !important;
+}
+
 .main-content {
     width: 100%;
 }
+
 .main-block {
     width: 65%;
     margin-left: auto;
