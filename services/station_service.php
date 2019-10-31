@@ -4,8 +4,10 @@
     /**
      * Testing only
      */
+    /*
     require("../config.php");
     require("../connect.php");
+    */
 
     /**
      * @Returns
@@ -20,7 +22,7 @@
      *              },]
      *  },]  
      */
-    function get_all_stations($conn){
+    function get_all_stations(){
         $conn = get_sql_connection();
         $result = Array();
         $all_stations = "SELECT * FROM Station";
@@ -30,10 +32,18 @@
             echo $e->getMessage();
         }
         while($row = $stations->fetch_assoc()){
-            $result[] = get_plugs_for_station($row["station_ID"], $conn);
+            $result[] = Array(
+                "station_id" => $row["station_ID"],
+                "num_plugs" => $row["num_plugs"],
+                "location" => $row["location"],
+                "plugs" => get_plugs_for_station($row["station_ID"], $conn) 
+            );
         }
-        var_dump($result);
+        //var_dump($result);
+        return $result;
     }
+
+
 
     /**
      * @Returns

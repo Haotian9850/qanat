@@ -4,6 +4,7 @@
     require("connect.php");
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
+    require(SERVICE_PATH."station_service.php");
 
 
     session_start();
@@ -66,6 +67,7 @@
 
 
     function homepage(){
+        $stations = get_all_stations();
         require(TEMPLATE_PATH."homepage.php");
     }
 
