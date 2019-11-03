@@ -1,6 +1,5 @@
 .footer {
     text-align: center;
-    position: absolute !important;
     bottom: 0;
     width: 100%;
     height: 45px;
@@ -34,6 +33,16 @@
 .status > .alert {
     width: 100% !important;
 }
+
+.station-card {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+}
+
+.plug{
+    margin-bottom: 0.5rem !important;
+}
+
 .main-title {
     margin-top: 1rem;
     display: inline-block;

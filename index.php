@@ -4,6 +4,7 @@
     require("connect.php");
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
+    require(SERVICE_PATH."station_service.php");
 
 
     session_start();
@@ -39,6 +40,7 @@
             }
             //TODO: add exception handling
             register_service($_POST["username"], $_POST["password"], $cars);
+            $_SESSION["statusMsg"] = "Registration successful";
             header("Location:?action=login");
         }
         require(TEMPLATE_PATH."register.php");
@@ -66,6 +68,7 @@
 
 
     function homepage(){
+        $stations = get_all_stations();
         require(TEMPLATE_PATH."homepage.php");
     }
 

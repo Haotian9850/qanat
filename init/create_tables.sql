@@ -5,21 +5,21 @@ use qanat;
 create table Station(
   station_ID int not null AUTO_INCREMENT,
   num_plugs int not null,
-  location varchar(50),
+  location varchar(255),
   primary key (station_ID)
 );
 
 
 create table Plug_Model(
-  model_no varchar(50) not null,
+  model_no varchar(255) not null,
   charge_speed int not null,
   primary key (model_no)
 );
 
 
 create table Plug(
-  serial_no varchar(50) not null,
-  model_no varchar(50) not null,
+  serial_no varchar(255) not null,
+  model_no varchar(255) not null,
   primary key (serial_no),
   constraint fk_plug_plug_type
     foreign key (model_no) references Plug_Model(model_no)
