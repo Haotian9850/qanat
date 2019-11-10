@@ -50,7 +50,7 @@ create table User(
   user_id int not null AUTO_INCREMENT,
   username varchar(50) not null,
   hash varchar(76) not null,
-  primary key (user_id)
+  primary key (user_id,username,hash)
 );
 
 -- Review(review_id,text,rating)
@@ -66,7 +66,7 @@ create table Charge_Event(
   VIN varchar(50) not null,
   dt_start timestamp not null,
   dt_end timestamp not null,
-  primary key (VIN,dt_start),
+  primary key (VIN,dt_start,dt_end),
   constraint fk_charge_event_vehicle
     foreign key (VIN) references Vehicle(VIN)
 );
