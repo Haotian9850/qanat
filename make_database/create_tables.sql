@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS ns9wr_qanat;
+CREATE DATABASE qanat;
 
-use ns9wr_qanat;
+use qanat;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(
@@ -49,8 +49,8 @@ create table Vehicle(
 create table User(
   user_id int not null AUTO_INCREMENT,
   username varchar(50) not null,
-  hash varchar(76) not null,
-  primary key (user_id,username,hash)
+  password varchar(76) not null,
+  primary key (user_id)
 );
 
 -- Review(review_id,text,rating)
@@ -66,7 +66,7 @@ create table Charge_Event(
   VIN varchar(50) not null,
   dt_start timestamp not null,
   dt_end timestamp not null,
-  primary key (VIN,dt_start,dt_end),
+  primary key (VIN,dt_start),
   constraint fk_charge_event_vehicle
     foreign key (VIN) references Vehicle(VIN)
 );
@@ -129,3 +129,4 @@ create table Happens_At(
   constraint fk_happens_at_charge_event
     foreign key (VIN,dt_start) references Charge_Event(VIN,dt_start)
 );
+
