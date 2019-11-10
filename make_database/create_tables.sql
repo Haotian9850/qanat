@@ -1,6 +1,6 @@
-CREATE DATABASE qanat;
+CREATE DATABASE IF NOT EXISTS ns9wr_qanat;
 
-use qanat;
+use ns9wr_qanat;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(
@@ -129,4 +129,3 @@ create table Happens_At(
   constraint fk_happens_at_charge_event
     foreign key (VIN,dt_start) references Charge_Event(VIN,dt_start)
 );
-
