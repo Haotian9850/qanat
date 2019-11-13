@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     require("config.php");
     require("connect.php");
@@ -22,7 +22,7 @@
           logout();
           break;
         default:
-          homepage(); 
+          homepage();
       }
 
     function register(){
@@ -39,9 +39,15 @@
                 );
             }
             //TODO: add exception handling
-            register_service($_POST["username"], $_POST["password"], $cars);
-            $_SESSION["statusMsg"] = "Registration successful";
-            header("Location:?action=login");
+            if(register_service($_POST["username"], $_POST["password"], $cars)){
+              $_SESSION["statusMsg"] = "Registration successful";
+              unset($_SESSION["errMsg"]);
+              header("Location:?action=login");
+            }else{
+              unset($_SESSION["statusMsg"]);
+              $_SESSION["errMsg"] = "Registration unsuccessful";
+            }
+
         }
         require(TEMPLATE_PATH."register.php");
     }
@@ -52,6 +58,7 @@
             if(login_service($_POST["username"], $_POST["password"])){
                 $_SESSION["username"] = $_POST["username"];
                 $_SESSION["statusMsg"] = "Successfully logged in for user ".$_POST["username"];
+                unset($_SESSION["errMsg"]);
                 header("Location:?action=homepage");
             }else{
                 $_SESSION["errMsg"] = "Incorrect username or password";
@@ -72,8 +79,8 @@
         require(TEMPLATE_PATH."homepage.php");
     }
 
-    
-    
+
+
 
 
 
