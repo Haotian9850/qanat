@@ -52,6 +52,7 @@
             if(login_service($_POST["username"], $_POST["password"])){
                 $_SESSION["username"] = $_POST["username"];
                 $_SESSION["statusMsg"] = "Successfully logged in for user ".$_POST["username"];
+                unset($_SESSION["errMsg"]);
                 header("Location:?action=homepage");
             }else{
                 $_SESSION["errMsg"] = "Incorrect username or password";
