@@ -48,7 +48,7 @@ create table Vehicle(
 -- User(user_id,username)
 create table User(
   user_id int not null AUTO_INCREMENT,
-  username varchar(50) not null,
+  username varchar(50) not null UNIQUE,
   password varchar(76) not null,
   primary key (user_id)
 );
