@@ -129,4 +129,3 @@ create table Happens_At(
   constraint fk_happens_at_charge_event
     foreign key (VIN,dt_start) references Charge_Event(VIN,dt_start)
 );
-

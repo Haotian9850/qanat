@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     /**
      * @PARAMS:
@@ -14,7 +14,11 @@
      */
     function register_service($username, $password, $cars){
         $conn = get_sql_connection();
-        register_cars($conn, $cars, register_user($conn, $username, $password));
+        $user = register_user($conn, $username, $password);
+        if(!$user){
+          return NULL;
+        }
+        return register_cars($conn, $cars,$user);
     }
 
     /**
@@ -22,6 +26,7 @@
      *  user_id of last inserted user
      */
     function register_user($conn, $username, $password){
+        // $conn->prepare("SELECT * FROM User WHERE username=\"?\"");
         $create_user = $conn->prepare("INSERT INTO User (username, password) VALUES (?, ?)");
         $create_user->bind_param(
             "ss",
@@ -29,9 +34,13 @@
             $password
         );
         try{
-            $create_user->execute();
+            if(!$create_user->execute()){
+              $_SESSION["errMsg"] = "Cannot create user ".$username;
+              throw new Exception('User exists?');
+            }
         }catch(Exception $e){
             echo $e->getMessage();
+            return NULL;
         }
         return mysqli_insert_id($conn);
     }
@@ -39,12 +48,17 @@
 
     function register_cars($conn, $cars, $user_id){
         foreach($cars as $car){
-            register_single_car($conn, $car, $user_id);
+            if(!register_single_car($conn, $car, $user_id)){
+              return NULL;
+            }
         }
+        return 1;
     }
 
 
     function register_single_car($conn, $car, $user_id){
+
+        // TODO: Don't insert the car type every time (duplicates)
         $insert_car_type = $conn->prepare(
             "INSERT INTO Car_Type (make, model, year) VALUES (?, ?, ?)"
         );
@@ -54,10 +68,15 @@
             $car->model,
             $car->year
         );
+
         try{
-            $insert_car_type->execute();
+            if(!$insert_car_type->execute()){
+              // $_SESSION["errMsg"] = "Unable to add vehicle information";
+              throw new Exception("SQL failed: ".$insert_car_type->error);
+            }
         }catch(Exception $e){
             echo $e->getMessage();
+            // return NULL;
         }
 
         $insert_car = $conn->prepare(
@@ -70,10 +89,15 @@
             $car->model,
             $car->year
         );
+        
         try{
-            $insert_car->execute();
+            if(!$insert_car->execute()){
+              $_SESSION["errMsg"] = "Unable to add vehicle information";
+              throw new Exception("SQL failed: ".$insert_car->error);
+            }
         }catch(Exception $e){
             echo $e->getMessage();
+            return NULL;
         }
 
         $insert_ownership = $conn->prepare(
@@ -88,7 +112,9 @@
             $insert_ownership->execute();
         }catch(Exception $e){
             echo $e->getMessage();
+            return NULL;
         }
+        return 1;
     }
 
 
