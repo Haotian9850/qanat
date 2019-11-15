@@ -40,6 +40,16 @@
      */
     function register_user($conn, $username, $password){
 
+        if(strlen($password) == 0){
+          $_SESSION["errMsg"] = "Can't have an empty password";
+          return NULL;
+        }
+
+        if(strlen($username) == 0){
+          $_SESSION["errMsg"] = "Can't have an empty username";
+          return NULL;
+        }
+
         if(user_exists($conn,$username)){
           $_SESSION["errMsg"] = "Cannot create user ".$username." (username taken)";
           return NULL;
