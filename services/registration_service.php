@@ -76,7 +76,7 @@
             }
         }catch(Exception $e){
             echo $e->getMessage();
-            // return NULL;
+            return NULL;
         }
 
         $insert_car = $conn->prepare(
@@ -89,7 +89,7 @@
             $car->model,
             $car->year
         );
-        
+
         try{
             if(!$insert_car->execute()){
               $_SESSION["errMsg"] = "Unable to add vehicle information";
