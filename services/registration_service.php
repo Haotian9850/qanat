@@ -21,11 +21,30 @@
         return register_cars($conn, $cars,$user);
     }
 
+    function user_exists($conn, $username){
+      $create_user = $conn->prepare("SELECT * FROM User where username=?");
+      $create_user->bind_param("s",$username);
+      if(!$create_user->execute() || !$create_user->store_result()){
+        throw new Exception('user_exists failed');
+      }
+
+      $rows = $create_user->num_rows;
+      return $rows > 0;
+
+
+    }
+
     /**
      * @RETURNS:
      *  user_id of last inserted user
      */
     function register_user($conn, $username, $password){
+
+        if(user_exists($conn,$username)){
+          $_SESSION["errMsg"] = "Cannot create user ".$username." (username taken)";
+          return NULL;
+        }
+
         // $conn->prepare("SELECT * FROM User WHERE username=\"?\"");
         $create_user = $conn->prepare("INSERT INTO User (username, password) VALUES (?, ?)");
         $create_user->bind_param(
@@ -35,8 +54,7 @@
         );
         try{
             if(!$create_user->execute()){
-              $_SESSION["errMsg"] = "Cannot create user ".$username;
-              throw new Exception('User exists?');
+              throw new Exception('create_user sql failed');
             }
         }catch(Exception $e){
             echo $e->getMessage();
