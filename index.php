@@ -45,7 +45,7 @@
               header("Location:?action=login");
             }else{
               unset($_SESSION["statusMsg"]);
-              // $_SESSION["errMsg"] = "Registration unsuccessful";
+              $_SESSION["errMsg"] = "Registration unsuccessful";
             }
 
         }
