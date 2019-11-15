@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
     /**
@@ -20,7 +20,7 @@
      *                  model_no: str,
      *                  charge_speed: int
      *              },]
-     *  },]  
+     *  },]
      */
     function get_all_stations(){
         $conn = get_sql_connection();
@@ -31,12 +31,15 @@
         }catch(Exception $e){
             echo $e->getMessage();
         }
+        if(!$stations){
+          return $result;
+        }
         while($row = $stations->fetch_assoc()){
             $result[] = Array(
                 "station_id" => $row["station_ID"],
                 "num_plugs" => $row["num_plugs"],
                 "location" => $row["location"],
-                "plugs" => get_plugs_for_station($row["station_ID"], $conn) 
+                "plugs" => get_plugs_for_station($row["station_ID"], $conn)
             );
         }
         //var_dump($result);
