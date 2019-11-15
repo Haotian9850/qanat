@@ -1,6 +1,6 @@
-CREATE DATABASE qanat;
+-- CREATE DATABASE qanat;
 
-use qanat;
+-- use qanat;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(

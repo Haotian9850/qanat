@@ -21,11 +21,40 @@
         return register_cars($conn, $cars,$user);
     }
 
+    function user_exists($conn, $username){
+      $create_user = $conn->prepare("SELECT * FROM User where username=?");
+      $create_user->bind_param("s",$username);
+      if(!$create_user->execute() || !$create_user->store_result()){
+        throw new Exception('user_exists failed');
+      }
+
+      $rows = $create_user->num_rows;
+      return $rows > 0;
+
+
+    }
+
     /**
      * @RETURNS:
      *  user_id of last inserted user
      */
     function register_user($conn, $username, $password){
+
+        if(strlen($password) == 0){
+          $_SESSION["errMsg"] = "Can't have an empty password";
+          return NULL;
+        }
+
+        if(strlen($username) == 0){
+          $_SESSION["errMsg"] = "Can't have an empty username";
+          return NULL;
+        }
+
+        if(user_exists($conn,$username)){
+          $_SESSION["errMsg"] = "Cannot create user ".$username." (username taken)";
+          return NULL;
+        }
+
         // $conn->prepare("SELECT * FROM User WHERE username=\"?\"");
         $create_user = $conn->prepare("INSERT INTO User (username, password) VALUES (?, ?)");
         $create_user->bind_param(
@@ -35,7 +64,7 @@
         );
         try{
             if(!$create_user->execute()){
-              throw new Exception('User exists?');
+              throw new Exception('create_user sql failed');
             }
         }catch(Exception $e){
             echo $e->getMessage();
@@ -56,6 +85,8 @@
 
 
     function register_single_car($conn, $car, $user_id){
+
+        // TODO: Don't insert the car type every time (duplicates)
         $insert_car_type = $conn->prepare(
             "INSERT INTO Car_Type (make, model, year) VALUES (?, ?, ?)"
         );
@@ -65,8 +96,10 @@
             $car->model,
             $car->year
         );
+
         try{
             if(!$insert_car_type->execute()){
+              // $_SESSION["errMsg"] = "Unable to add vehicle information";
               throw new Exception("SQL failed: ".$insert_car_type->error);
             }
         }catch(Exception $e){
@@ -84,8 +117,12 @@
             $car->model,
             $car->year
         );
+
         try{
-            $insert_car->execute();
+            if(!$insert_car->execute()){
+              $_SESSION["errMsg"] = "Unable to add vehicle information";
+              throw new Exception("SQL failed: ".$insert_car->error);
+            }
         }catch(Exception $e){
             echo $e->getMessage();
             return NULL;
