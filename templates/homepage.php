@@ -19,6 +19,9 @@
               <div class="card-body">
                 <h5 class="card-title"><?php echo $station["num_plugs"] ?> plugs in total</h5>
                 <ul class="list-group">
+                  <?php
+                    echo count($station["plugs"]);
+                  ?>
                 <?php foreach($station["plugs"] as $plug){ ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center plug">
                     <b>Model: </b><?php echo $plug["model_no"] ?>
