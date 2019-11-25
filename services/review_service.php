@@ -1,24 +1,19 @@
 <?php
     
-     function submit_review($text, $rate){
-	  $conn = get_sql_connection();
-      $insert_review = $conn->prepare(
-            "INSERT INTO Review (review_id, text, rating) VALUES (?, ?, ?)"
-        );
-      $insert_review->bind_param(
-            "isi",
-            NULL,
-			text,
-			rate
-        );
+        include_once("./library.php");
+		// To connect to the database
+		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+		// Check connection
+		if (mysqli_connect_errno())
+		{echo "Failed to connect to MySQL: " . mysqli_connect_error();}
 		
-		try{
-            if(!$insert_review->execute()){
-              throw new Exception("SQL failed: ".$insert_car_type->error);
-            }
-        }catch(Exception $e){
-            echo $e->getMessage();
-            return NULL;
-        }
-    }
+		// Form the SQL query (an INSERT query)
+		
+		$sql="INSERT INTO Persons (?, ?, ?) VALUES(NULL,'$_POST[inputtext]','$_POST[inputrate]')";
+		
+		if (!mysqli_query($con,$sql))
+		{die('Error: ' . mysqli_error($con));}
+		echo "1 record added";
+		// Output to user
+		mysqli_close($con);
 ?>
