@@ -2,12 +2,23 @@
     
      function submit_review($text, $rate){
 	  $conn = get_sql_connection();
-      $create_user = $conn->prepare("SELECT * FROM User where username=?");
-      $create_user->bind_param("s",$username);
-      if(!$create_user->execute() || !$create_user->store_result()){
-        throw new Exception('user_exists failed');
-      }
-      $rows = $create_user->num_rows;
-      return $rows > 0;
+      $insert_review = $conn->prepare(
+            "INSERT INTO Review (review_id, text, rating) VALUES (?, ?, ?)"
+        );
+      $insert_review->bind_param(
+            "isi",
+            NULL,
+			text,
+			rate
+        );
+		
+		try{
+            if(!$insert_review->execute()){
+              throw new Exception("SQL failed: ".$insert_car_type->error);
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+            return NULL;
+        }
     }
 ?>
