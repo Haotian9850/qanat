@@ -24,6 +24,7 @@
 
         &nbsp;&nbsp;&nbsp;
         <?php if(!isset($_SESSION["username"])){ ?>
+		  <a href="?action=reviews" class="btn btn-light">Reviews</a>
           <a href="?action=register" class="btn btn-light">Register</a>
           <a href="?action=login" class="btn btn-light">Log in</a>
         <?php } ?>

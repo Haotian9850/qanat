@@ -5,7 +5,7 @@
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
     require(SERVICE_PATH."station_service.php");
-
+	require(SERVICE_PATH."review_service.php");
 
     session_start();
 
@@ -78,7 +78,10 @@
         $stations = get_all_stations();
         require(TEMPLATE_PATH."homepage.php");
     }
-
+	
+	function reviews(){
+        header(TEMPLATE_PATH."reviews.php");
+    }
 
 
 
