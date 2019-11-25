@@ -1,6 +1,6 @@
 <?php
     
-        	include_once("./library.php");
+        	include_once("./config.php");
 		// To connect to the database
 		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 		// Check connection
