@@ -56,11 +56,12 @@
         }
 
         // $conn->prepare("SELECT * FROM User WHERE username=\"?\"");
+        $hash = password_hash($password, PASSWORD_BCRYPT);
         $create_user = $conn->prepare("INSERT INTO User (username, password) VALUES (?, ?)");
         $create_user->bind_param(
             "ss",
             $username,
-            $password
+            $hash
         );
         try{
             if(!$create_user->execute()){
