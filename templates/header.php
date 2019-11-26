@@ -19,6 +19,7 @@
                   Logged in as <?php echo $_SESSION["username"] ?> &nbsp;
               <a href="?action=logout">Log out</a>
           </div>
+          <a href="?action=profile" class="btn btn-light">My Profile</a>
         <?php } ?>
         &nbsp;&nbsp;&nbsp;
 

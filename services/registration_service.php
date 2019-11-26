@@ -12,13 +12,21 @@
      *      year: int
      *  }
      */
-    function register_service($username, $password, $cars){
+    function register_user_service($username, $password){
         $conn = get_sql_connection();
         $user = register_user($conn, $username, $password);
         if(!$user){
           return NULL;
         }
-        return register_cars($conn, $cars,$user);
+        return 1;
+    }
+    function register_cars_service($cars, $user_id){
+        $conn = get_sql_connection();
+        $cars_ret = register_cars($conn, $cars, $user_id);
+        if(!$cars_ret){
+          return NULL;
+        }
+        return 1;
     }
 
     function user_exists($conn, $username){
@@ -39,7 +47,6 @@
      *  user_id of last inserted user
      */
     function register_user($conn, $username, $password){
-
         if(strlen($password) == 0){
           $_SESSION["errMsg"] = "Can't have an empty password";
           return NULL;
