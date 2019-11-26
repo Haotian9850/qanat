@@ -5,6 +5,7 @@
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
     require(SERVICE_PATH."station_service.php");
+    require(SERVICE_PATH."cars_service.php");
 
 
     session_start();
@@ -89,6 +90,8 @@
             }
 
         }
+        $cars = get_owned_cars($_SESSION["username"]);
+        $stations = get_all_stations();
         require(TEMPLATE_PATH."profile.php");
     }
 

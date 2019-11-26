@@ -7,6 +7,20 @@
         <div class="row row-margined">
             <h1 class="display-4">Your Vehicles</h1>
         </div>
+
+        <div class="row row-margined">
+          	<ul class="list-group">
+	        <?php foreach($cars as $car){ ?>
+	          <li class="list-group-item d-flex justify-content-between align-items-center plug">
+	            <b>VIN: </b><?php echo $car["VIN"]; ?>
+	            <b>Make: </b><?php echo $car["make"]; ?>
+	            <b>Model: </b><?php echo $car["model"]; ?>
+	            <b>Year: </b><?php echo $car["year"]; ?>
+	          </li>
+	        <?php } ?>
+	        </ul>
+        </div>
+
         <div class="row row-margined">
             <h1 class="display-4">Register Vehicles</h1>
         </div>

@@ -20,9 +20,9 @@
         }
         return 1;
     }
-    function register_cars_service($cars, $user_id){
+    function register_cars_service($cars, $username){
         $conn = get_sql_connection();
-        $cars_ret = register_cars($conn, $cars, $user_id);
+        $cars_ret = register_cars($conn, $cars, $username);
         if(!$cars_ret){
           return NULL;
         }
@@ -82,7 +82,14 @@
     }
 
 
-    function register_cars($conn, $cars, $user_id){
+    function register_cars($conn, $cars, $username){
+        $get_id = $conn->prepare("SELECT user_id FROM User WHERE username = ?");
+        $get_id->bind_param("s",$username);
+        $get_id->execute();
+        $result = $get_id->get_result();
+        while($row = $result->fetch_assoc()){
+            $user_id = $row["user_id"];
+        }
         foreach($cars as $car){
             if(!register_single_car($conn, $car, $user_id)){
               return NULL;
@@ -112,7 +119,6 @@
             }
         }catch(Exception $e){
             echo $e->getMessage();
-            return NULL;
         }
 
         $insert_car = $conn->prepare(
@@ -125,7 +131,7 @@
             $car->model,
             $car->year
         );
-
+        header("Location:?action=homepage");
         try{
             if(!$insert_car->execute()){
               $_SESSION["errMsg"] = "Unable to add vehicle information";
