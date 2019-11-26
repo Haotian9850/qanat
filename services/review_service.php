@@ -1,8 +1,11 @@
 <?php
     
-        	include_once("./config.php");
+        	
+		error_reporting(-1);
+		ini_set('display_errors', 'On');
+		include_once('./config.php');
 		// To connect to the database
-		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+		$con = new mysqli("cs4750.cs.virginia.edu", "ns9wr", "upsorn", "ns9wr_qanat");
 		// Check connection
 		if (mysqli_connect_errno())
 		{echo "Failed to connect to MySQL: " . mysqli_connect_error();}
@@ -11,10 +14,15 @@
 
 		// Form the SQL query (an INSERT query)
 		
+		//Citation: https://stackoverflow.com/questions/34080984/text-form-cant-accept-apostrophes
+		
+		
 		$sql="INSERT INTO Review (text, rating) VALUES('$_POST[inputtext]','$_POST[inputrate]')";
 		
 		if (!mysqli_query($con,$sql))
-		{die('Error: ' . mysqli_error($con));}
+		{
+		echo 'Error inside connection';
+		die('Error: ' . mysqli_error($con));}
 		//Citation: consulted this Stack Overflow link to learn how to refresh page after a submission
 		//https://stackoverflow.com/questions/42109893/how-to-go-back-to-page-after-submitting-form-using-php
 		header("Location: homepage.php");

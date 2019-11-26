@@ -29,13 +29,10 @@
 
 	
 	    <?php
-
-		require_once('./library.php');
-
-		$con= new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-
+		include_once('./library.php');
+		// To connect to the database
+		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 		// Check connection
-
 		if (mysqli_connect_errno()) 
 		{
 			echo("Can't connect to MySQL Server Segmentation Fault. Error code: " . mysqli_connect_error());
@@ -43,7 +40,6 @@
 		}
 
 		// Form the SQL query (a SELECT query)
-
 		$sql="SELECT * FROM Review";
 		$result = mysqli_query($con,$sql);
 	 	while($row = mysqli_fetch_array($result)){
@@ -54,7 +50,6 @@
         	}
 		
         	mysqli_close($con);
-
 	?>
 	</div>
         </div>
