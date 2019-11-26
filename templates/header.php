@@ -16,7 +16,7 @@
         <a href="?action=homepage" class="navbar-brand">Qanat: Find Electricity for Your Car</a>
         <?php if(isset($_SESSION["username"])){ ?>
           <div class="btn btn-light" role="alert">
-                  Logged in as <?php echo $_SESSION["username"] ?> &nbsp;
+                  Logged in as <?php echo htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?> &nbsp;
               <a href="?action=logout">Log out</a>
           </div>
           <a href="?action=profile" class="btn btn-light">My Profile</a>
@@ -34,14 +34,14 @@
       <div class="row margined">
         <?php if(isset($_SESSION["statusMsg"])){ ?>
           <div class="alert alert-primary msg" role="alert">
-            <?php echo $_SESSION["statusMsg"]; ?>
+            <?php echo htmlspecialchars($_SESSION["statusMsg"], ENT_QUOTES, 'UTF-8'); ?>
           </div>
         <?php } ?>
       </div>
       <div class="row margined">
         <?php if(isset($_SESSION["errMsg"])){ ?>
           <div class="alert alert-danger msg" role="alert">
-            <?php echo $_SESSION["errMsg"]; ?>
+            <?php echo htmlspecialchars($_SESSION["errMsg"], ENT_QUOTES, 'UTF-8'); ?>
           </div>
         <?php } ?>
       </div>

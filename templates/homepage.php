@@ -17,17 +17,17 @@
                 <?php echo $station["location"] ?>
               </div>
               <div class="card-body">
-                <h5 class="card-title"><?php echo $station["num_plugs"] ?> plugs in total</h5>
+                <h5 class="card-title"><?php echo htmlspecialchars($station["num_plugs"], ENT_QUOTES, 'UTF-8') ?> plugs in total</h5>
                 <ul class="list-group">
                   <?php
                     echo count($station["plugs"]);
                   ?>
                 <?php foreach($station["plugs"] as $plug){ ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center plug">
-                    <b>Model: </b><?php echo $plug["model_no"] ?>
-                    <b>Serial: </b><?php echo $plug["serial_no"] ?>
+                    <b>Model: </b><?php echo htmlspecialchars($plug["model_no"], ENT_QUOTES, 'UTF-8') ?>
+                    <b>Serial: </b><?php echo htmlspecialchars($plug["serial_no"], ENT_QUOTES, 'UTF-8') ?>
                     <span class="badge badge-primary badge-pill">
-                    <?php echo $plug["charge_speed"] ?>
+                    <?php echo htmlspecialchars($plug["charge_speed"], ENT_QUOTES, 'UTF-8') ?>
                     WHr / h</span>
                   </li>
                 <?php } ?>

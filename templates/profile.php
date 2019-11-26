@@ -12,10 +12,10 @@
           	<ul class="list-group">
 	        <?php foreach($cars as $car){ ?>
 	          <li class="list-group-item d-flex justify-content-between align-items-center plug">
-	            <b>VIN: </b><?php echo $car["VIN"]; ?>
-	            <b>Make: </b><?php echo $car["make"]; ?>
-	            <b>Model: </b><?php echo $car["model"]; ?>
-	            <b>Year: </b><?php echo $car["year"]; ?>
+	            <b>VIN: </b><?php echo htmlspecialchars($car["VIN"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp; 
+	            <b>Make: </b><?php echo htmlspecialchars($car["make"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
+	            <b>Model: </b><?php echo htmlspecialchars($car["model"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
+	            <b>Year: </b><?php echo htmlspecialchars($car["year"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
 	          </li>
 	        <?php } ?>
 	        </ul>
