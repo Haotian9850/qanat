@@ -80,7 +80,7 @@
     }
 	
 	function reviews(){
-        header(TEMPLATE_PATH."reviews.php");
+        header("Location:?action=reviews");
     }
 
 
