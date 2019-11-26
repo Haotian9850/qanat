@@ -17,7 +17,7 @@
 		{die('Error: ' . mysqli_error($con));}
 		//Citation: consulted this Stack Overflow link to learn how to refresh page after a submission
 		//https://stackoverflow.com/questions/42109893/how-to-go-back-to-page-after-submitting-form-using-php
-		header("Location: homepage.php");
+		header("Location: reviews.php");
 		echo "WooHoo";
 
 
