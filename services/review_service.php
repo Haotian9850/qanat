@@ -4,8 +4,10 @@
 		error_reporting(-1);
 		ini_set('display_errors', 'On');
 		include_once('./config.php');
+		include_once('./connect.php');
 		// To connect to the database
-		$con = new mysqli("cs4750.cs.virginia.edu", "ns9wr", "upsorn", "ns9wr_qanat");
+		//$con = new mysqli("cs4750.cs.virginia.edu", "ns9wr", "upsorn", "ns9wr_qanat");	
+		$con = get_sql_connection();
 		// Check connection
 		if (mysqli_connect_errno())
 		{echo "Failed to connect to MySQL: " . mysqli_connect_error();}
@@ -32,4 +34,3 @@
 
 		// Output to user
 		mysqli_close($con);
-?>
