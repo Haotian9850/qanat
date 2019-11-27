@@ -28,9 +28,10 @@
             <h1 class="display-4">Statistics</h1>
 
 		<?php 
-		include_once('./library.php');
+		include_once('./config.php');
+		include_once('./connect.php');
 		// To connect to the database
-		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+		$con = get_sql_connection();
 		$q1 =  "CALL `statgen`(@p0, @p1);";
 		$q1 .= "SELECT @p0 AS `num_users`, @p1 AS `avg_rating`;";
 		//https://www.php.net/manual/en/mysqli.multi-query.php
@@ -62,9 +63,10 @@
 
 	
 	    <?php
-		include_once('./library.php');
+		include_once('./config.php');
+		include_once('./connect.php');
 		// To connect to the database
-		$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+		$con = get_sql_connection();
 		// Check connection
 		if (mysqli_connect_errno()) 
 		{
