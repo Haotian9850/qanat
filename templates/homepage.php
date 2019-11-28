@@ -9,6 +9,7 @@
             <h1 class="display-4">Qanat: Find Charging for Your Electric Car</h1>
         </div>
         <div class="row row-margined">
+          <label><input type="checkbox"> <strong>Only show plugs that my car can use</strong></label>
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
         </div>
         <div class="row row-margined">
@@ -33,7 +34,7 @@
                   </li>
                 <?php } ?>
                 </ul>
-                <a href="#" class="btn btn-primary">Check it out</a>
+                <a href="#" onClick="return false;" class="btn btn-primary show-all">Show all</a>
               </div>
             </div>
           <?php } ?>
