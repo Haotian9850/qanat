@@ -15,10 +15,9 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="?action=homepage" class="navbar-brand">Qanat: Find Electricity for Your Car</a>
         <?php if(isset($_SESSION["username"])){ ?>
-          <div class="btn btn-light" role="alert">
-                  Logged in as <?php echo $_SESSION["username"] ?> &nbsp;
-              <a href="?action=reviews" class="btn btn-light">Leave a Review</a>
-              <a href="?action=logout">Log out</a>
+                  Logged in as&nbsp;<b><?php echo $_SESSION["username"] ?></b> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="?action=reviews" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
+                <a href="?action=logout" class="btn btn-danger">Log out</a>
           </div>
         <?php } ?>
         &nbsp;&nbsp;&nbsp;
@@ -26,8 +25,8 @@
         &nbsp;&nbsp;&nbsp;
         <?php if(!isset($_SESSION["username"])){ ?>
 		  
-          <a href="?action=register" class="btn btn-light">Register</a>
-          <a href="?action=login" class="btn btn-light">Log in</a>
+          <a href="?action=register" class="btn btn-primary">Register</a>&nbsp;&nbsp;&nbsp;
+          <a href="?action=login" class="btn btn-success">Log in</a>
         <?php } ?>
   </nav>
   <div class="main-content">

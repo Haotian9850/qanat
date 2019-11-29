@@ -13,7 +13,7 @@
             exit();
         }
         if($conn->ping()){
-            printf("Connection to SQL server %s is successful.\n", SERVER);
+            //printf("Connection to SQL server %s is successful.\n", SERVER);  //DEBUG ONLY
         }else{
             error_log("SQL error while pinging host: ".$conn->error);
         }
