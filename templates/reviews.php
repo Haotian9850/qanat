@@ -30,15 +30,12 @@
 		<?php 
 		include_once('./config.php');
 		include_once('./connect.php');
-		// To connect to the database
 		$con = get_sql_connection();
 		$q1 =  "CALL `statgen`(@p0, @p1);";
 		$q1 .= "SELECT @p0 AS `num_users`, @p1 AS `avg_rating`;";
 		//https://www.php.net/manual/en/mysqli.multi-query.php
 		//Recieved syntax for multi-query, meant for stored procedures
 		if (mysqli_multi_query($con, $q1)) {
-   		
-		    do {
         		/* store first result set */
         		if ($result = mysqli_store_result($con)) {
             			while ($row = mysqli_fetch_row($result)) {
@@ -46,15 +43,7 @@
 					echo ", Average Rating of Qanat: " . $row[1];
             		}
 			mysqli_free_result($result);
-			if (mysqli_more_results($con)) {
-           			 printf("-----------------\n");
-        		}
-			
-            		
-        		}
-        		
-        
-    			} while (mysqli_next_result($con));
+			}
 		}
         	mysqli_close($con);
 
