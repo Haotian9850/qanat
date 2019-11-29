@@ -30,15 +30,18 @@
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Your current location:</h5>
                 </div>
-                <p class="mb-1">some coordinate</p>
+                <ul class="list-group">
+                  <li class="list-group-item"><b>Latitude: </b><span id="currLatitude"></span></li>
+                  <li class="list-group-item"><b>Longitude: </b><span id="currLongitude"></span></li>
+                </ul>
               </a>
               <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Closest charging station to your location:</h5>
+                  <h5 class="mb-1">Closest charging station to you:</h5>
                 </div>
                 <ul class="list-group">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item"><b>Latitude: </b><span id="closestLatitude"></span></li>
+                  <li class="list-group-item"><b>Longitude: </b><span id="closestLongitude"></span></li>
                 </ul>
               </a>
               <a class="list-group-item list-group-item-action flex-column align-items-start">
