@@ -4,14 +4,8 @@
 <div class="main-content">
     <div class="main-block">
         <div class="row row-margined centered">
-            <h1 class="display-4"><b>Qanat: Find Charging for Your Electric Car</b></h1>
+            <h1 class="display-4"><b>Qanat: Find Electricity for Your Electric Car</b></h1>
         </div>
-        
-          <?php if(isset($_SESSION["username"])){?>
-            <div class="row row-margined">
-            <label id="filter"><input type="checkbox"> <strong>Only show plugs that my car can use</strong></label>
-            </div>
-          <?php } ?>
 
         <div class="row row-margined map">
           <div class="col-md-8">
@@ -30,8 +24,8 @@
                       <h5 class="mb-1">Your current location:</h5>
                     </div>
                     <ul class="list-group">
-                      <li class="list-group-item"><b>Latitude: </b><span id="currLatitude"></span></li>
-                      <li class="list-group-item"><b>Longitude: </b><span id="currLongitude"></span></li>
+                      <li class="list-group-item"><b>Latitude: </b><code id="currLatitude"></code></li>
+                      <li class="list-group-item"><b>Longitude: </b><code id="currLongitude"></code></li>
                     </ul>
                   </a>
                   <a class="list-group-item list-group-item-action flex-column align-items-start">
@@ -39,10 +33,10 @@
                       <h5 class="mb-1">Closest charging station to you:</h5>
                     </div>
                     <ul class="list-group">
-                      <li class="list-group-item"><b>Station ID: </b><span id="closestId"></span></li>
-                      <li class="list-group-item"><b>Latitude: </b><span id="closestLatitude"></span></li>
-                      <li class="list-group-item"><b>Longitude: </b><span id="closestLongitude"></span></li>
-                      <li class="list-group-item"><b>Distance: </b><span id="dist"></span> km</li>
+                      <li class="list-group-item"><b>Station ID: </b><code id="closestId"></code></li>
+                      <li class="list-group-item"><b>Latitude: </b><code id="closestLatitude"></code></li>
+                      <li class="list-group-item"><b>Longitude: </b><code id="closestLongitude"></code></li>
+                      <li class="list-group-item"><b>Distance: </b><code id="dist"></code> km</li>
                     </ul>
                   </a>
                 </div>
@@ -62,6 +56,12 @@
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
         </div>
         
+        <?php if(isset($_SESSION["username"])){?>
+            <div class="row row-margined">
+            <label id="filter"><input type="checkbox"> <strong>Only show plugs that my car can use</strong></label>
+            </div>
+        <?php } ?>
+
         <div class="row row-margined">
           <?php foreach($stations as $station){ ?>
             <div class="card station-card">

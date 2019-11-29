@@ -5,6 +5,7 @@
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
     require(SERVICE_PATH."station_service.php");
+    require(SERVICE_PATH."user_service.php");
 	require(SERVICE_PATH."review_service.php");
 
     session_start();
@@ -16,18 +17,20 @@
             register();
             break;
         case "login":
-          login();
-          break;
+            login();
+            break;
         case "logout":
-          logout();
-          break;
+            logout();
+            break;
+        case "review":
+            review();
+            break;
         default:
-          homepage();
+            homepage();
       }
 
     function register(){
         //build cars array
-
         if(!empty($_POST)){
             $cars = Array();
             foreach($_POST["vin"] as $i => $vin){
@@ -54,18 +57,20 @@
 
 
     function login(){
-        if(!empty($_POST)){
+        if(!isset($_SESSION["username"])){
             if(login_service($_POST["username"], $_POST["password"])){
                 $_SESSION["username"] = $_POST["username"];
                 $_SESSION["statusMsg"] = "Successfully logged in for user ".$_POST["username"];
                 unset($_SESSION["errMsg"]);
-                header("Location:?action=homepage");
+                homepage();
             }else{
                 $_SESSION["errMsg"] = "Incorrect username or password";
                 header("Location:?action=login");
             }
+        }else{
+            require(TEMPLATE_PATH."login.php");
         }
-        require(TEMPLATE_PATH."login.php");
+        
     }
 
     function logout(){
@@ -82,9 +87,25 @@
         }
         require(TEMPLATE_PATH."homepage.php");
     }
-	
-	function reviews(){
-        header("Location:?action=reviews");
+    
+    
+	function review(){
+        if(!isset($_SESSION["username"])){
+            $_SESSION["errMsg"] = "Please log in first";
+            require(TEMPLATE_PATH."login.php");
+        }else{  
+            if(!empty($_POST)){
+                if(add_review_service($_POST["comment"], $_POST["rating"], $_SESSION["username"])){
+                    $_SESSION["statusMsg"] = "Successfully submitted review";
+                    homepage();
+                }else{
+                    $_SESSION["errMsg"] = "Cannot submit review";
+                    require(TEMPLATE_PATH."review.php");
+                }
+            }else{
+                require(TEMPLATE_PATH."review.php");
+            }
+        }
     }
 
 

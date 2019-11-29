@@ -16,7 +16,7 @@
         <a href="?action=homepage" class="navbar-brand">Qanat: Find Electricity for Your Car</a>
         <?php if(isset($_SESSION["username"])){ ?>
                   Logged in as&nbsp;<b><?php echo $_SESSION["username"] ?></b> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="?action=reviews" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
+                <a href="?action=review" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
                 <a href="?action=logout" class="btn btn-danger">Log out</a>
           </div>
         <?php } ?>
