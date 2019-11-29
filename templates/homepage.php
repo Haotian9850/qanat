@@ -16,43 +16,47 @@
         <div class="row row-margined map">
           <div class="col-md-8">
             <div>
-                <iframe width="800" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=800&cp=38.0694~-78.494&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="yes">
+                <iframe id="map" width="800" height="400" frameborder="0" src="" scrolling="yes">
                 </iframe>
                 <div style="white-space: nowrap; text-align: center; width: 800px; padding: 6px 0;">
-                    <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=38.0694~-78.494&amp;sty=r&amp;lvl=11&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-                    <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=38.0694~-78.494&amp;sty=r&amp;lvl=11&amp;rtp=~pos.38.0694_-78.494____&amp;FORM=MBEDLD">Get Directions</a>
                 </div>
             </div>
           </div>
           <div class="col-md-4">
-          <div class="list-group">
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Your current location:</h5>
+            <div class="row">
+              <div class="list-group">
+                  <a class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Your current location:</h5>
+                    </div>
+                    <ul class="list-group">
+                      <li class="list-group-item"><b>Latitude: </b><span id="currLatitude"></span></li>
+                      <li class="list-group-item"><b>Longitude: </b><span id="currLongitude"></span></li>
+                    </ul>
+                  </a>
+                  <a class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Closest charging station to you:</h5>
+                    </div>
+                    <ul class="list-group">
+                      <li class="list-group-item"><b>Station ID: </b><span id="closestId"></span></li>
+                      <li class="list-group-item"><b>Latitude: </b><span id="closestLatitude"></span></li>
+                      <li class="list-group-item"><b>Longitude: </b><span id="closestLongitude"></span></li>
+                      <li class="list-group-item"><b>Distance: </b><span id="dist"></span> km</li>
+                    </ul>
+                  </a>
                 </div>
-                <ul class="list-group">
-                  <li class="list-group-item"><b>Latitude: </b><span id="currLatitude"></span></li>
-                  <li class="list-group-item"><b>Longitude: </b><span id="currLongitude"></span></li>
-                </ul>
-              </a>
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Closest charging station to you:</h5>
-                </div>
-                <ul class="list-group">
-                <li class="list-group-item"><b>Latitude: </b><span id="closestLatitude"></span></li>
-                  <li class="list-group-item"><b>Longitude: </b><span id="closestLongitude"></span></li>
-                </ul>
-              </a>
-              <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Estimated charding time:</h5>
-                </div>
-                <p class="mb-1">150 minutes</p>
-              </a>
+              </div>
+
+              <div class="row mt-2 justify-content-between">
+              <a class="btn btn-primary" id="dirMapLink" target="_blank" href="">Get Directions</a>  
+              </div>
             </div>
           </div>
-        </div>
+
+
+
+
 
         <div class="row row-margined">
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
