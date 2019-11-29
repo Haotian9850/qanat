@@ -66,7 +66,7 @@
             $result[] = Array(
                 "station_id"=>$row["station_ID"],
                 "num_plugs"=>$row["num_plugs"],
-                "location"=>$row["location"],
+                "location"=>implode(explode("&", $row["location"]), ", "),
                 "plugs"=>$plugs,
                 "num_compatible"=>get_num_compatible($plugs)
             );

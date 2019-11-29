@@ -3,7 +3,7 @@
 ?>
 <div class="main-content">
     <div class="main-block">
-        <div class="row row-margined">
+        <div class="row row-margined centered">
             <h1 class="display-4"><b>Qanat: Find Charging for Your Electric Car</b></h1>
         </div>
         
@@ -26,29 +26,26 @@
           </div>
           <div class="col-md-4">
           <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small>3 days ago</small>
+                  <h5 class="mb-1">Your current location:</h5>
                 </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>Donec id elit non mi porta.</small>
+                <p class="mb-1">some coordinate</p>
               </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
+                  <h5 class="mb-1">Closest charging station to your location:</h5>
                 </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
+                <ul class="list-group">
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                </ul>
               </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-                  <small class="text-muted">3 days ago</small>
+                  <h5 class="mb-1">Estimated charding time:</h5>
                 </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
+                <p class="mb-1">150 minutes</p>
               </a>
             </div>
           </div>
@@ -62,7 +59,7 @@
           <?php foreach($stations as $station){ ?>
             <div class="card station-card">
               <div class="card-header">
-                <?php echo $station["location"] ?>
+                <b>Location: </b><?php echo $station["location"] ?>
               </div>
               <div class="card-body">
                 <h5 class="card-title total_plug_ct"><?php echo $station["num_plugs"] ?> plugs in total</h5>

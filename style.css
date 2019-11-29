@@ -12,6 +12,10 @@
     margin-bottom: 1rem !important;
 }
 
+.centered {
+    text-align: center !important;
+}
+
 .map {
     border: solid 1px #D3D3D3 !important;
     border-radius: 4px !important;
