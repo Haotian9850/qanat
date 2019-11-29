@@ -75,7 +75,11 @@
 
 
     function homepage(){
-        $stations = get_all_stations();
+        if(!isset($_SESSION["username"])){
+            $stations = get_all_stations("visitor");
+        }else{
+            $stations = get_all_stations($_SESSION["username"]);
+        }
         require(TEMPLATE_PATH."homepage.php");
     }
 	

@@ -17,6 +17,7 @@
         <?php if(isset($_SESSION["username"])){ ?>
           <div class="btn btn-light" role="alert">
                   Logged in as <?php echo $_SESSION["username"] ?> &nbsp;
+              <a href="?action=reviews" class="btn btn-light">Leave a Review</a>
               <a href="?action=logout">Log out</a>
           </div>
         <?php } ?>
@@ -24,7 +25,7 @@
 
         &nbsp;&nbsp;&nbsp;
         <?php if(!isset($_SESSION["username"])){ ?>
-		  <a href="?action=reviews" class="btn btn-light">Reviews</a>
+		  
           <a href="?action=register" class="btn btn-light">Register</a>
           <a href="?action=login" class="btn btn-light">Log in</a>
         <?php } ?>

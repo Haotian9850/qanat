@@ -9,7 +9,7 @@
             <h1 class="display-4">Qanat: Find Charging for Your Electric Car</h1>
         </div>
         <div class="row row-margined">
-          <?php if(strlen($_SESSION["username"]) > 0){?>
+          <?php if(isset($_SESSION["username"])){?>
             <label id="filter"><input type="checkbox"> <strong>Only show plugs that my car can use</strong></label>
           <?php } ?>
           
