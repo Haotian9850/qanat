@@ -49,9 +49,6 @@
           </div>
 
 
-
-
-
         <div class="row row-margined">
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
         </div>
