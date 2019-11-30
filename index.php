@@ -57,7 +57,7 @@
 
 
     function login(){
-        if(!isset($_SESSION["username"])){
+        if(!empty($_POST)){
             if(login_service($_POST["username"], $_POST["password"])){
                 $_SESSION["username"] = $_POST["username"];
                 $_SESSION["statusMsg"] = "Successfully logged in for user ".$_POST["username"];
@@ -65,7 +65,7 @@
                 homepage();
             }else{
                 $_SESSION["errMsg"] = "Incorrect username or password";
-                header("Location:?action=login");
+                require(TEMPLATE_PATH."login.php");
             }
         }else{
             require(TEMPLATE_PATH."login.php");
@@ -90,6 +90,8 @@
     
     
 	function review(){
+        $stats = get_stored_procedure_results();
+        $reviews = get_all_reviews();
         if(!isset($_SESSION["username"])){
             $_SESSION["errMsg"] = "Please log in first";
             require(TEMPLATE_PATH."login.php");
