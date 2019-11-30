@@ -16,7 +16,7 @@ function renderLocations(){
             closestStation[1]
         )
         document.getElementById("map").src = `https://www.bing.com/maps/embed?h=400&w=800&cp=${closestStation[0]}~${closestStation[1]}&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8`;
-        document.getElementById("dirMapLink").href = `https://www.bing.com/maps/directions?cp=${position.coords.latitude}~${position.coords.longitude}&amp;sty=r&amp;lvl=11&amp;rtp=~pos.${closestStation[0]}_${closestStation[1]}____&amp;FORM=MBEDLD`;
+        document.getElementById("dirMapLink").href = `https://www.google.com/maps/dir/'${position.coords.latitude},${position.coords.longitude}'/${closestStation[0]},${closestStation[1]}/@${position.coords.latitude},${position.coords.longitude}z/`;
     });
 }
 
