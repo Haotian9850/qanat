@@ -1,6 +1,6 @@
-CREATE DATABASE qanat;
+-- CREATE DATABASE qanat;
 
-use qanat;
+-- use qanat;
 
 -- Station(station_ID,num_plugs,location)
 create table Station(
@@ -48,7 +48,7 @@ create table Vehicle(
 -- User(user_id,username)
 create table User(
   user_id int not null AUTO_INCREMENT,
-  username varchar(50) not null,
+  username varchar(50) not null UNIQUE,
   password varchar(76) not null,
   primary key (user_id)
 );
@@ -129,4 +129,3 @@ create table Happens_At(
   constraint fk_happens_at_charge_event
     foreign key (VIN,dt_start) references Charge_Event(VIN,dt_start)
 );
-
