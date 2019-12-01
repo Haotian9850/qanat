@@ -5,8 +5,10 @@
     require(SERVICE_PATH."auth_service.php");
     require(SERVICE_PATH."registration_service.php");
     require(SERVICE_PATH."station_service.php");
+    require(SERVICE_PATH."cars_service.php");
     require(SERVICE_PATH."user_service.php");
-	require(SERVICE_PATH."review_service.php");
+	  require(SERVICE_PATH."review_service.php");
+
 
     session_start();
 
@@ -22,6 +24,11 @@
         case "logout":
             logout();
             break;
+        case "profile":
+            profile();
+            break;
+        case "deleteCar":
+            deleteCar();
         case "review":
             review();
             break;
@@ -32,23 +39,14 @@
     function register(){
         //build cars array
         if(!empty($_POST)){
-            $cars = Array();
-            foreach($_POST["vin"] as $i => $vin){
-                $cars[] = (object)array(
-                    "VIN"=>$vin,
-                    "make"=>$_POST["make"][$i],
-                    "model"=>$_POST["model"][$i],
-                    "year"=>$_POST["year"][$i]
-                );
-            }
             //TODO: add exception handling
-            if(register_service($_POST["username"], $_POST["password"], $cars)){
+            if(register_user_service($_POST["username"], $_POST["password"])){
               $_SESSION["statusMsg"] = "Registration successful";
               unset($_SESSION["errMsg"]);
               header("Location:?action=login");
             }else{
               unset($_SESSION["statusMsg"]);
-              // $_SESSION["errMsg"] = "Registration unsuccessful";
+              $_SESSION["errMsg"] = "Registration unsuccessful";
             }
 
         }
@@ -76,6 +74,42 @@
     function logout(){
         session_destroy();
         header("Location:?action=homepage");
+    }
+
+    function profile(){
+        if(empty($_SESSION["username"])){header("Location:?action=login");}
+        if(!empty($_POST)){
+            $cars = Array();
+            foreach($_POST["vin"] as $i => $vin){
+                $cars[] = (object)array(
+                    "VIN"=>$vin,
+                    "make"=>$_POST["make"][$i],
+                    "model"=>$_POST["model"][$i],
+                    "year"=>$_POST["year"][$i]
+                );
+            }
+            //TODO: add exception handling
+            if(register_cars_service($cars, $_SESSION["username"])){
+              $_SESSION["statusMsg"] = "Registration successful";
+              unset($_SESSION["errMsg"]);
+              header("Location:?action=profile");
+            }else{
+              unset($_SESSION["statusMsg"]);
+              // $_SESSION["errMsg"] = "Registration unsuccessful";
+            }
+
+        }
+        $cars = get_owned_cars($_SESSION["username"]);
+        $stations = get_all_stations();
+        require(TEMPLATE_PATH."profile.php");
+    }
+
+    function deleteCar(){
+        if(empty($_SESSION["username"])){return 0;}
+        if(unregister_car_service($_POST["VIN"], $_SESSION["username"])){
+            $_SESSION["statusMsg"] = "Removal successful";
+            unset($_SESSION["errMsg"]);
+        }
     }
 
 

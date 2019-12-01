@@ -15,10 +15,12 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="?action=homepage" class="navbar-brand">Qanat: Find Electricity for Your Car</a>
         <?php if(isset($_SESSION["username"])){ ?>
-                  Logged in as&nbsp;<b><?php echo $_SESSION["username"] ?></b> &nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="btn btn-light" role="alert">
+                  Logged in as <?php echo htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?> &nbsp;
                 <a href="?action=review" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
                 <a href="?action=logout" class="btn btn-danger">Log out</a>
           </div>
+          <a href="?action=profile" class="btn btn-light">My Profile</a>
         <?php } ?>
         &nbsp;&nbsp;&nbsp;
 
@@ -34,14 +36,14 @@
       <div class="row margined">
         <?php if(isset($_SESSION["statusMsg"])){ ?>
           <div class="alert alert-primary msg" role="alert">
-            <?php echo $_SESSION["statusMsg"]; ?>
+            <?php echo htmlspecialchars($_SESSION["statusMsg"], ENT_QUOTES, 'UTF-8'); ?>
           </div>
         <?php } ?>
       </div>
       <div class="row margined">
         <?php if(isset($_SESSION["errMsg"])){ ?>
           <div class="alert alert-danger msg" role="alert">
-            <?php echo $_SESSION["errMsg"]; ?>
+            <?php echo htmlspecialchars($_SESSION["errMsg"], ENT_QUOTES, 'UTF-8'); ?>
           </div>
         <?php } ?>
       </div>
