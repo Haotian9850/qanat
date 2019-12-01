@@ -1,13 +1,21 @@
 <?php 
     
     function get_sql_connection(){
-        //require("config.php");
-        $conn =  new mysqli(
-            SERVER,
-            USERNAME,
-            PASSWORD,
-            DATABASE
-        );
+        if (isset($_SESSION["username"])) {
+            $conn =  new mysqli(
+                SERVER,
+                USERNAME_AUTHED,
+                PASSWORD_AUTHED,
+                DATABASE
+            );
+        } else {
+            $conn =  new mysqli(
+                SERVER,
+                USERNAME_UNAUTHED,
+                PASSWORD_UNAUTHED,
+                DATABASE
+            );
+        }
         if($conn->connect_errno){
             error_log("Connection to SQL service failed with error: ".$conn->getMessage());
             exit();
