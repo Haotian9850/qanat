@@ -46,8 +46,6 @@
 
       $rows = $create_user->num_rows;
       return $rows > 0;
-
-
     }
 
     

@@ -13,5 +13,6 @@
         const stations = <?php echo json_encode($stations); ?>;
     </script>
     <script src="../resources/scripts/map.js"></script>
+    <script src="../resources/scripts/delete.js"></script>
   </body>
 </html>
