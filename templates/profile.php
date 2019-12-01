@@ -8,20 +8,6 @@
             <h1 class="display-4">Your Vehicles</h1>
         </div>
 
-        <?php if(count($cars) != 0){ ?>    
-          	<ul class="list-group">
-	        <?php foreach($cars as $car){ ?>
-	          <li class="list-group-item d-flex justify-content-between align-items-center plug">
-	            <b>VIN: </b> &nbsp;&nbsp; 
-	            <b>Make: </b> &nbsp;&nbsp;
-	            <b>Model: </b> &nbsp;&nbsp;
-	            <b>Year: </b> &nbsp;&nbsp;
-                <a class="btn btn-primary" onclick=deleteCar('<?php echo htmlspecialchars($car["VIN"], ENT_QUOTES, "UTF-8");?>');>Delete</a>
-	          </li>
-	        <?php } ?>
-	        </ul>
-        <?php } ?>
-
         <?php if(count($cars) > 0){ ?>
             <table class="table">
                 <thead>

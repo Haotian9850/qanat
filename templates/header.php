@@ -21,7 +21,6 @@
           <a href="?action=logout" class="btn btn-danger">Log out</a>
         <?php } ?>
         <?php if(!isset($_SESSION["username"])){ ?>
-		  
           <a href="?action=register" class="btn btn-primary">Register</a>&nbsp;&nbsp;&nbsp;
           <a href="?action=login" class="btn btn-success">Log in</a>
         <?php } ?>
