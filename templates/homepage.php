@@ -49,9 +49,6 @@
           </div>
 
 
-
-
-
         <div class="row row-margined">
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
         </div>
@@ -69,15 +66,25 @@
                 <b>Location: </b><?php echo $station["location"] ?>
               </div>
               <div class="card-body">
+<<<<<<< HEAD
+                <h5 class="card-title"><?php echo htmlspecialchars($station["num_plugs"], ENT_QUOTES, 'UTF-8') ?> plugs in total</h5>
+=======
                 <h5 class="card-title total_plug_ct"><?php echo $station["num_plugs"] ?> plugs in total</h5>
                 <h5 class="card-title compatible_plug_ct" style="display: none;"><?php echo $station["num_compatible"] ?> compatible plugs</h5>
+>>>>>>> development
                 <ul class="list-group">
                 <?php foreach($station["plugs"] as $plug){ ?>
+<<<<<<< HEAD
+                  <li class="list-group-item d-flex justify-content-between align-items-center plug">
+                    <b>Model: </b><?php echo htmlspecialchars($plug["model_no"], ENT_QUOTES, 'UTF-8') ?>
+                    <b>Serial: </b><?php echo htmlspecialchars($plug["serial_no"], ENT_QUOTES, 'UTF-8') ?>
+=======
                   <li class="list-group-item d-flex justify-content-between align-items-center plug" compatible=<?php echo $plug["compatible"]?> >
                     <b>Model: </b><?php echo $plug["model_no"] ?>
                     <b>Serial: </b><?php echo $plug["serial_no"] ?>
+>>>>>>> development
                     <span class="badge badge-primary badge-pill">
-                    <?php echo $plug["charge_speed"] ?>
+                    <?php echo htmlspecialchars($plug["charge_speed"], ENT_QUOTES, 'UTF-8') ?>
                     WHr / h</span>
                   </li>
                 <?php } ?>

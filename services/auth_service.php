@@ -2,21 +2,24 @@
 
     function login_service($username, $password){
         $conn = get_sql_connection();
-        $login = "SELECT * FROM User WHERE username = '$username' && password = '$password'";
-        /*
-        $login->bind_param(
-            "ss",
-            $username,
-            $password
+        $get_user = $conn->prepare("SELECT password FROM User WHERE username = ?");
+        $get_user->bind_param(
+            "s",
+            $username
         );
-        */
-        $result = null;
         try{
-            $result = mysqli_query($conn, $login);
+            if(!$get_user->execute()){
+              throw new Exception('get_user sql failed');
+            }
         }catch(Exception $e){
             echo $e->getMessage();
+            return NULL;
         }
-        return mysqli_num_rows($result) == 1;
+        $users = $get_user->get_result();
+        while($row = $users->fetch_assoc()){
+            $hash = $row["password"];
+        }
+        return password_verify($password, $hash);
     }
 
     function logout_service(){

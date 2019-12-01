@@ -12,13 +12,29 @@
      *      year: int
      *  }
      */
-    function register_service($username, $password, $cars){
+    function register_user_service($username, $password){
         $conn = get_sql_connection();
         $user = register_user($conn, $username, $password);
         if(!$user){
           return NULL;
         }
-        return register_cars($conn, $cars,$user);
+        return 1;
+    }
+    function register_cars_service($cars, $username){
+        $conn = get_sql_connection();
+        $cars_ret = register_cars($conn, $cars, $username);
+        if(!$cars_ret){
+          return NULL;
+        }
+        return 1;
+    }
+    function unregister_car_service($vin, $username){
+        $conn = get_sql_connection();
+        $car_ret = unregister_single_car($conn, $vin, $username);
+        if(!$car_ret){
+          return NULL;
+        }
+        return 1;
     }
 
     function user_exists($conn, $username){
@@ -40,7 +56,6 @@
      *  user_id of last inserted user
      */
     function register_user($conn, $username, $password){
-
         if(strlen($password) == 0){
           $_SESSION["errMsg"] = "Can't have an empty password";
           return NULL;
@@ -57,11 +72,12 @@
         }
 
         // $conn->prepare("SELECT * FROM User WHERE username=\"?\"");
+        $hash = password_hash($password, PASSWORD_BCRYPT);
         $create_user = $conn->prepare("INSERT INTO User (username, password) VALUES (?, ?)");
         $create_user->bind_param(
             "ss",
             $username,
-            $password
+            $hash
         );
         try{
             if(!$create_user->execute()){
@@ -75,7 +91,14 @@
     }
 
 
-    function register_cars($conn, $cars, $user_id){
+    function register_cars($conn, $cars, $username){
+        $get_id = $conn->prepare("SELECT user_id FROM User WHERE username = ?");
+        $get_id->bind_param("s",$username);
+        $get_id->execute();
+        $result = $get_id->get_result();
+        while($row = $result->fetch_assoc()){
+            $user_id = $row["user_id"];
+        }
         foreach($cars as $car){
             if(!register_single_car($conn, $car, $user_id)){
               return NULL;
@@ -105,7 +128,6 @@
             }
         }catch(Exception $e){
             echo $e->getMessage();
-            return NULL;
         }
 
         $insert_car = $conn->prepare(
@@ -118,7 +140,6 @@
             $car->model,
             $car->year
         );
-
         try{
             if(!$insert_car->execute()){
               $_SESSION["errMsg"] = "Unable to add vehicle information";
@@ -146,17 +167,38 @@
         return 1;
     }
 
+    function unregister_single_car($conn, $vin, $username) {
+        $get_id = $conn->prepare("SELECT user_id FROM User WHERE username = ?");
+        $get_id->bind_param("s",$username);
+        $get_id->execute();
+        $result = $get_id->get_result();
+        while($row = $result->fetch_assoc()){
+            $user_id = $row["user_id"];
+        }
 
+        $remove_ownership = $conn->prepare(
+            "DELETE FROM Owns WHERE VIN=? and user_id=?"
+        );
+        $remove_ownership->bind_param("ss", $vin, $user_id);
+        try{
+            $remove_ownership->execute();
+        }catch(Exception $e){
+            echo $e->getMessage();
+            return NULL;
+        }
 
-    /*
-    $arr = Array();
-    $arr[] = (object)array(
-        "VIN"=>"123456ASDDF",
-        "make"=>"Ford",
-        "model"=>"Fiesta",
-        "year"=>2019
-    );
-    register("haotian", "123456", $arr);
-    */
+        $remove_car = $conn->prepare("DELETE FROM Vehicle WHERE VIN=?");
+        $remove_car->bind_param("s",$vin);
+        try{
+            if(!$remove_car->execute()){
+              $_SESSION["errMsg"] = "Unable to remove vehicle";
+              throw new Exception("SQL failed: ".$remove_car->error);
+            }
+        }catch(Exception $e){
+            echo $e->getMessage();
+            return NULL;
+        }
+        return 1;
+    }
 
 ?>
