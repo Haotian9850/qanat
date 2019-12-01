@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
 
     <title>Qanat</title>
   </head>
@@ -17,7 +17,8 @@
         <?php if(isset($_SESSION["username"])){ ?>
           <div class="btn btn-light" role="alert">
                   Logged in as <?php echo htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?> &nbsp;
-              <a href="?action=logout">Log out</a>
+                <a href="?action=review" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
+                <a href="?action=logout" class="btn btn-danger">Log out</a>
           </div>
           <a href="?action=profile" class="btn btn-light">My Profile</a>
         <?php } ?>
@@ -25,8 +26,9 @@
 
         &nbsp;&nbsp;&nbsp;
         <?php if(!isset($_SESSION["username"])){ ?>
-          <a href="?action=register" class="btn btn-light">Register</a>
-          <a href="?action=login" class="btn btn-light">Log in</a>
+		  
+          <a href="?action=register" class="btn btn-primary">Register</a>&nbsp;&nbsp;&nbsp;
+          <a href="?action=login" class="btn btn-success">Log in</a>
         <?php } ?>
   </nav>
   <div class="main-content">

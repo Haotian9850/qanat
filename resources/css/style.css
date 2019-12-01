@@ -12,6 +12,22 @@
     margin-bottom: 1rem !important;
 }
 
+.centered {
+    text-align: center !important;
+}
+
+.map {
+    border: solid 1px #D3D3D3 !important;
+    border-radius: 4px !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+#map {
+    margin-top: 1rem !important;
+}
+
+
 .msg {
     width: 100% !important;   
     margin-top: 2rem !important;
