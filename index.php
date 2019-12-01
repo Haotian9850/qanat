@@ -133,6 +133,7 @@
         }else{
             $stations = get_all_stations($_SESSION["username"]);
         }
+        unset($_SESSION["errMsg"]);
         require(TEMPLATE_PATH."homepage.php");
     }
     
