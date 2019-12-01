@@ -15,7 +15,7 @@ function renderLocations(){
             closestStation[0],
             closestStation[1]
         )
-        document.getElementById("map").src = `https://www.bing.com/maps/embed?h=400&w=800&cp=${closestStation[0]}~${closestStation[1]}&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8`;
+        document.getElementById("map").src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDUm4F4uF7GDdNQ_kE7m6x61ePJuobh_fI&q=${closestStation[0]},${closestStation[1]}&zoom=12`;
         document.getElementById("dirMapLink").href = `https://www.google.com/maps/dir/'${position.coords.latitude},${position.coords.longitude}'/${closestStation[0]},${closestStation[1]}/@${position.coords.latitude},${position.coords.longitude}z/`;
     });
 }
@@ -31,11 +31,11 @@ function getClosestChargingStation(latitude, longitude, stations){
     minDist = Math.pow(2, 53);
     closestStation = new Array();
     stations.forEach(station => {
-        if(minDist > Math.pow(station["location"].split(",")[0] - latitude, 2) + Math.pow(station["location"].split(",")[1] - longitude, 2)){
-            closestStation[0] = station["location"].split(",")[0].trim();
-            closestStation[1] = station["location"].split(",")[1].trim();
-            minDist = Math.pow(station["location"].split(",")[0] - latitude, 2) + Math.pow(station["location"].split(",")[1] - longitude, 2);
+        if(minDist > distanceInKmBetweenEarthCoordinates(latitude, longitude, station["location"].split(",")[0], station["location"].split(",")[1])){
+            closestStation[0] = station["location"].split(",")[0];
+            closestStation[1] = station["location"].split(",")[1];
             closestStation[2] = station["station_id"];
+            minDist = distanceInKmBetweenEarthCoordinates(latitude, longitude, station["location"].split(",")[0], station["location"].split(",")[1]);
         }
     });
     console.table(closestStation);
