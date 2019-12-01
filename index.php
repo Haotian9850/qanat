@@ -25,6 +25,9 @@
         case "profile":
             profile();
             break;
+        case "deleteCar":
+            deleteCar();
+            break;
         default:
             homepage();
       }
@@ -93,6 +96,14 @@
         $cars = get_owned_cars($_SESSION["username"]);
         $stations = get_all_stations();
         require(TEMPLATE_PATH."profile.php");
+    }
+
+    function deleteCar(){
+        if(empty($_SESSION["username"])){return 0;}
+        if(unregister_car_service($_POST["VIN"], $_SESSION["username"])){
+            $_SESSION["statusMsg"] = "Removal successful";
+            unset($_SESSION["errMsg"]);
+        }
     }
 
 

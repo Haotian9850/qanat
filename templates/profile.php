@@ -16,6 +16,7 @@
 	            <b>Make: </b><?php echo htmlspecialchars($car["make"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
 	            <b>Model: </b><?php echo htmlspecialchars($car["model"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
 	            <b>Year: </b><?php echo htmlspecialchars($car["year"], ENT_QUOTES, 'UTF-8'); ?> &nbsp;&nbsp;
+                <div class="btn btn-primary" onclick="deleteCar('<?php echo htmlspecialchars($car["VIN"], ENT_QUOTES, 'UTF-8');?>');">Delete</div>
 	          </li>
 	        <?php } ?>
 	        </ul>
@@ -52,6 +53,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    function deleteCar(vin) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "index.php?action=deleteCar", true);
+        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.send('VIN='.concat(vin));
+    }
+</script>
 
 <script>
     newCarInput = `<div class="form-group col-md-4">
