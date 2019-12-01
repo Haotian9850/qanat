@@ -5,6 +5,8 @@
     height: 45px;
     line-height: 40px; 
     background-color: #232C4B;
+    position: absolute !important;
+    bottom: 0 !important;
 }
 
 .row-margined {
