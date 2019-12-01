@@ -74,6 +74,8 @@
 
     function logout(){
         unset($_SESSION["username"]);
+        unset($_SESSION["statusMsg"]);
+        unset($_SESSION["errMsg"]);
         session_destroy();
         homepage();
     }
