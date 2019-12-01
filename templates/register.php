@@ -5,9 +5,8 @@
 <div class="main-content">
     <div class="main-block">
         <div class="row row-margined">
-            <h1 class="display-4">Register User</h1>
+            <h1 class="display-4">Register</h1>
         </div>
-        <div class="row row-margined">
             <form action="?action=register" method="POST">
             <div class="form-row">
                     <div class="form-group col-md-6">
@@ -23,7 +22,6 @@
                 <br/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-        </div>
     </div>
 </div>
 

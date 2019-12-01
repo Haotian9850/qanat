@@ -1,12 +1,11 @@
 .footer {
     text-align: center;
-    bottom: 0;
     width: 100%;
     height: 45px;
     line-height: 40px; 
     background-color: #232C4B;
-    position: absolute !important;
     bottom: 0 !important;
+    position: fixed !important;
 }
 
 .row-margined {
