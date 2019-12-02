@@ -7,9 +7,7 @@
         	Vehicle NATURAL JOIN Owns NATURAL JOIN User WHERE username = ?");
         $all_cars->bind_param("s", $username);
         try{
-            if(!$all_cars->execute()){
-              throw new Exception('all_cars sql failed');
-            }
+            $all_cars->execute();
         }catch(Exception $e){
             echo $e->getMessage();
             return NULL;

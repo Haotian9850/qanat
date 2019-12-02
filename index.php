@@ -29,6 +29,7 @@
             break;
         case "deleteCar":
             deleteCar();
+            break;  
         case "review":
             review();
             break;
@@ -68,16 +69,22 @@
         }else{
             require(TEMPLATE_PATH."login.php");
         }
-        
     }
+
 
     function logout(){
+        unset($_SESSION["username"]);
+        unset($_SESSION["statusMsg"]);
+        unset($_SESSION["errMsg"]);
         session_destroy();
-        header("Location:?action=homepage");
+        homepage();
     }
+    
 
     function profile(){
-        if(empty($_SESSION["username"])){header("Location:?action=login");}
+        if(!isset($_SESSION["username"])){
+            login();
+        }
         if(!empty($_POST)){
             $cars = Array();
             foreach($_POST["vin"] as $i => $vin){
@@ -103,12 +110,21 @@
         require(TEMPLATE_PATH."profile.php");
     }
 
+
     function deleteCar(){
-        if(empty($_SESSION["username"])){return 0;}
-        if(unregister_car_service($_POST["VIN"], $_SESSION["username"])){
-            $_SESSION["statusMsg"] = "Removal successful";
-            unset($_SESSION["errMsg"]);
+        if(!isset($_SESSION["username"])){
+            login();
         }
+        if(!empty($_GET)){
+            if(unregister_car_service($_GET["vin"], $_SESSION["username"])){
+                $_SESSION["statusMsg"] = "Car successfully unregistered";
+                unset($_SESSION["errMsg"]);
+            }else{
+                $SESSION["errMsg"] = "Cannot remove car";
+            }
+            header("Location:?action=profile");
+        }
+        require(TEMPLATE_PATH."profile.php");
     }
 
 
@@ -118,6 +134,7 @@
         }else{
             $stations = get_all_stations($_SESSION["username"]);
         }
+        unset($_SESSION["errMsg"]);
         require(TEMPLATE_PATH."homepage.php");
     }
     

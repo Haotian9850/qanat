@@ -7,12 +7,11 @@
             "s",
             $username
         );
+        $hash = "";
         try{
-            if(!$get_user->execute()){
-              throw new Exception('get_user sql failed');
-            }
+            $get_user->execute();
         }catch(Exception $e){
-            echo $e->getMessage();
+            error_log($e->getMessage());
             return NULL;
         }
         $users = $get_user->get_result();
