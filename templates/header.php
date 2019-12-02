@@ -17,7 +17,7 @@
         <?php if(isset($_SESSION["username"])){ ?>
           <a class="btn btn-light">Logged in as <?php echo htmlspecialchars($_SESSION["username"], ENT_QUOTES, 'UTF-8') ?></a>&nbsp;&nbsp;
           <a href="?action=review" class="btn btn-primary">Leave a Review</a> &nbsp;&nbsp;&nbsp;
-          <a href="?action=profile" class="btn btn-secondary">My Profile</a>&nbsp;&nbsp;
+          <a href="?action=profile" class="btn btn-secondary">My Profile</a>&nbsp;&nbsp;&nbsp;
           <a href="?action=logout" class="btn btn-danger">Log out</a>
         <?php } ?>
         <?php if(!isset($_SESSION["username"])){ ?>

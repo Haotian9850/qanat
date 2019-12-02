@@ -36,7 +36,7 @@
                       <li class="list-group-item"><b>Station ID: </b><code id="closestId"></code></li>
                       <li class="list-group-item"><b>Latitude: </b><code id="closestLatitude"></code></li>
                       <li class="list-group-item"><b>Longitude: </b><code id="closestLongitude"></code></li>
-                      <li class="list-group-item"><b>Distance: </b><code id="dist"></code> km</li>
+                      <li class="list-group-item"><b>Distance: </b><code id="dist"></code>&nbsp;km</li>
                     </ul>
                   </a>
                 </div>
@@ -47,8 +47,8 @@
               </div>
             </div>
           </div>
-
-
+        
+        <hr/>
         <div class="row row-margined">
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
         </div>

@@ -1,5 +1,7 @@
 console.log("map.js")
 
+const key = "AIzaSyDUm4F4uF7GDdNQ_kE7m6x61ePJuobh_fI"
+
 function renderLocations(){
     navigator.geolocation.getCurrentPosition((position) => {
         document.getElementById("currLatitude").innerHTML += `${position.coords.latitude}`;
@@ -15,8 +17,9 @@ function renderLocations(){
             closestStation[0],
             closestStation[1]
         )
-        document.getElementById("map").src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDUm4F4uF7GDdNQ_kE7m6x61ePJuobh_fI&q=${closestStation[0]},${closestStation[1]}&zoom=12`;
+        document.getElementById("map").src = `https://www.google.com/maps/embed/v1/place?key=${key}&q=${closestStation[0]},${closestStation[1]}&zoom=12`;
         document.getElementById("dirMapLink").href = `https://www.google.com/maps/dir/'${position.coords.latitude},${position.coords.longitude}'/${closestStation[0]},${closestStation[1]}/@${position.coords.latitude},${position.coords.longitude}z/`;
+        console.log(document.getElementById("direction"));
     });
 }
 
