@@ -33,6 +33,9 @@ GRANT all on ns9wr_qanat.Car_Type to 'ns9wr_b'@'%';
 GRANT all on ns9wr_qanat.Owns to 'ns9wr_b'@'%';
 GRANT all on ns9wr_qanat.Review to 'ns9wr_b'@'%';
 GRANT all on ns9wr_qanat.Makes to 'ns9wr_b'@'%';
+
+GRANT EXECUTE ON PROCEDURE statgen TO 'ns9wr_b'@'%';
+GRANT EXECUTE ON PROCEDURE statgen TO 'ns9wr_a'@'%';
 */
 
 

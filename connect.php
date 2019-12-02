@@ -2,14 +2,14 @@
     
     function get_sql_connection(){
         if (isset($_SESSION["username"])) {
-            $conn =  new mysqli(
+            $conn = new mysqli(
                 SERVER,
                 USERNAME_AUTHED,
                 PASSWORD_AUTHED,
                 DATABASE
             );
         } else {
-            $conn =  new mysqli(
+            $conn = new mysqli(
                 SERVER,
                 USERNAME_UNAUTHED,
                 PASSWORD_UNAUTHED,

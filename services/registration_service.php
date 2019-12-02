@@ -110,12 +110,9 @@
         );
 
         try{
-            if(!$insert_car_type->execute()){
-              // $_SESSION["errMsg"] = "Unable to add vehicle information";
-              throw new Exception("SQL failed: ".$insert_car_type->error);
-            }
+            $insert_car_type->execute();
         }catch(Exception $e){
-            echo $e->getMessage();
+            $_SESSION["errMsg"] = "Cannot add vehicle: ".$insert_car_type->error;
         }
 
         $insert_car = $conn->prepare(

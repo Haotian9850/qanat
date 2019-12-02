@@ -13,7 +13,7 @@
 					<textarea class="form-control" name="comment" rows="6" required></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleFormControlTextarea1">Give us a rating from 1 to 10</label>
+					<label for="exampleFormControlTextarea1">Give us a rating from 1 to 100</label>
 					<input type="number" min="1" max="100" class="form-control" name="rating" required>
 				</div>
 				<button type="submit" class="btn btn-primary mb-5">Submit</button> 
