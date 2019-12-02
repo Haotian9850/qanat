@@ -107,7 +107,6 @@
 
         }
         $cars = get_owned_cars($_SESSION["username"]);
-        $stations = get_all_stations($_SESSION["username"]);
         require(TEMPLATE_PATH."profile.php");
     }
 

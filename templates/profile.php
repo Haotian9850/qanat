@@ -79,6 +79,13 @@
 </div>
 
 <script>
+    function deleteCar(vin) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "index.php?action=deleteCar", false);
+        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.send('VIN='.concat(vin));
+        location.reload(true);
+    }
     newCarInput = `<div class="form-group col-md-4">
                         <label>VIN</label>
                         <input type="text" class="form-control" name="vin[]">
