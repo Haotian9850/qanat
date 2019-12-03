@@ -7,7 +7,8 @@
     require(SERVICE_PATH."station_service.php");
     require(SERVICE_PATH."cars_service.php");
     require(SERVICE_PATH."user_service.php");
-	  require(SERVICE_PATH."review_service.php");
+    require(SERVICE_PATH."review_service.php");
+	require(SERVICE_PATH."export_service.php");
 
 
     session_start();
@@ -32,6 +33,9 @@
             break;  
         case "review":
             review();
+            break;
+        case "export":
+            export();
             break;
         default:
             homepage();
