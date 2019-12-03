@@ -51,6 +51,8 @@
         <hr/>
         <div class="row row-margined">
           <h2 class="display-5">Here are a list of charging stations available in our database: </h2>
+          <button id="export">Export this Data as CSV</button>
+          <a id="hidden_export_link"></a>
         </div>
         
         <?php if(isset($_SESSION["username"])){?>
