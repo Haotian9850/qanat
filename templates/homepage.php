@@ -12,7 +12,7 @@
             <div>
                 <iframe id="map" width="800" height="400" frameborder="0" src="" scrolling="yes">
                 </iframe>
-                <div style="white-space: nowrap; text-align: center; width: 800px; padding: 6px 0;">
+                <div style="white-space: nowrap; text-align: center; padding: 6px 0;">
                 </div>
             </div>
           </div>
@@ -73,8 +73,9 @@
                 <ul class="list-group">
                 <?php foreach($station["plugs"] as $plug){ ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center plug" compatible=<?php echo $plug["compatible"]?> >
-                    <b>Model: </b><?php echo htmlspecialchars($plug["model_no"], ENT_QUOTES, 'UTF-8') ?>
+                    <span><b>Model: </b><?php echo htmlspecialchars($plug["model_no"], ENT_QUOTES, 'UTF-8') ?><br/>
                     <b>Serial: </b><?php echo htmlspecialchars($plug["serial_no"], ENT_QUOTES, 'UTF-8') ?>
+                </span>
                     <span class="badge badge-primary badge-pill">
                     <?php echo htmlspecialchars($plug["charge_speed"], ENT_QUOTES, 'UTF-8') ?>
                     WHr / h

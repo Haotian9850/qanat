@@ -9,6 +9,7 @@
         </div>
 
         <?php if(count($cars) > 0){ ?>
+        <div class="row" id="table">
             <table class="table">
                 <thead>
                     <tr>
@@ -34,13 +35,15 @@
                         <td>
                             <?php echo htmlspecialchars($car["year"], ENT_QUOTES, 'UTF-8'); ?>
                         </td>
-                        <td>
+                        <td id="deleteCarButton">
                             <input type="button" class="btn btn-danger deleteCar" value="Delete this car" onclick="location.href='?action=deleteCar&vin=<?php echo htmlspecialchars($car['VIN'], ENT_QUOTES, 'UTF-8'); ?>';">
                         </td>
+                        
                     </tr>
                 <?php } ?>
                 </tbody>
                 </table>
+                </div>
         <?php }else{ ?>
             <div class="alert alert-danger" role="alert">
                 Currently, there is no car registered with you!

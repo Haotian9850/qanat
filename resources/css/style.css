@@ -26,8 +26,25 @@
 
 #map {
     margin-top: 1rem !important;
+    width: 800px !important;
 }
 
+table{
+    overflow: hidden !important;
+}
+
+td, th{
+    word-wrap: break-word !important;
+}
+
+
+@media (orientation: portrait) {
+    #map {
+        box-sizing: border-box !important;
+        width: 100% !important;
+        margin-right: 0.5rem !important;
+    }
+  }
 
 .msg {
     width: 100% !important;   
