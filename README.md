@@ -16,6 +16,8 @@ For Unix / Linux systems, download / clone this project to `/var/www/html/`
 #### Access project with remote DB server
 Head to `localhost` to access the project homepage
 
+*Please ensure that location access is enabled in your browser!*
+
 
 ### Windows
 #### Download 
@@ -23,3 +25,9 @@ Download / clone this project to `YOUR_XAMPP_PATH\htdocs`
 
 #### Access project with remote DB server
 Head to `localhost` to access the project homepage
+
+
+Here is a sample screenshot of `homepage` after logging in:
+
+![homepage](imgs/homepage.png)
+
