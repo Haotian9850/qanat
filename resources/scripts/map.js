@@ -1,6 +1,6 @@
-console.log("map.js")
+console.log("map.js");
 
-const key = "AIzaSyDUm4F4uF7GDdNQ_kE7m6x61ePJuobh_fI"
+const key = "KEY_PLACE_HOLDER";
 
 function renderLocations(){
     navigator.geolocation.getCurrentPosition((position) => {
